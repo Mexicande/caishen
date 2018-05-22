@@ -54,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
         String name = getResources().getString(R.string.appName);
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         map.put("name",name);
-        map.put("market","vivo");
+        map.put("market",channel);
         ApiService.GET_SERVICE(Api.STATUS.getStatus, map, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {

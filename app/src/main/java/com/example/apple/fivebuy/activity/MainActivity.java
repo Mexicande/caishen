@@ -663,7 +663,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout.LayoutParams localObject = new LinearLayout.LayoutParams(mScreenWidth, (int) (9.0F * (mScreenWidth / 16.0F)));
         scrollView.setHeaderLayoutParams(localObject);
         //handler.sendEmptyMessage(1);
-        Log.i("---", "loadView");
     }
     //toolbar的背景模糊
     private void applyBlur() {

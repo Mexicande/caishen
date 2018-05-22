@@ -310,7 +310,6 @@ public class LoginActivity extends AppCompatActivity implements VerListener{
             return;
         }
 
-        String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 
         Map<String,String> jsonObject=new HashMap<>();
             jsonObject.put("name",name);

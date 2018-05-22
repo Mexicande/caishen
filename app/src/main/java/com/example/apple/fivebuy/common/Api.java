@@ -32,6 +32,8 @@ public interface Api {
     interface  STATUS{
         /** 状态**/
         String getStatus=HOST+"vest/getStatus";
+        /**版本更新**/
+        String UPDATE=HOST+"vest/version";
     }
 
 

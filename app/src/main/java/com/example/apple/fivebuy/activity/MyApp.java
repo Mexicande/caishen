@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDex;
 
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.LogUtil;
 import com.example.apple.fivebuy.R;
 import com.example.apple.fivebuy.common.Contacts;
 import com.example.apple.fivebuy.dao.AllInfo;
@@ -16,6 +18,7 @@ import com.example.apple.fivebuy.dao.DaoMaster;
 import com.example.apple.fivebuy.dao.DaoSession;
 import com.example.apple.fivebuy.dao.ImagerBean;
 import com.example.apple.fivebuy.dao.User;
+import com.example.apple.fivebuy.utils.ToastUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
 import com.meituan.android.walle.WalleChannelReader;
@@ -53,13 +56,16 @@ public class MyApp extends Application {
         MyApp.image = image;
     }
 
-
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this) ;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         initOkGo();
-        AVOSCloud.initialize(this, Contacts.LEAN_ID,Contacts.LEAN_KEY);
         requestQueue= Volley.newRequestQueue(getApplicationContext());
         sp = super.getSharedPreferences("eSetting", Context.MODE_PRIVATE);//只能被本应用访问
     }
@@ -69,12 +75,15 @@ public class MyApp extends Application {
     }
 
     private void initOkGo() {
+        AVOSCloud.initialize(this, Contacts.LEAN_ID,Contacts.LEAN_KEY);
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,Contacts.UMENG_KEY
                 ,channel));
         HttpParams params=new HttpParams();
-        params.put("channel","vivo");
-        params.put("app_name", R.string.appName);
+        String name = getString(R.string.appName);
+        params.put("market",channel);
+        params.put("app_name", name);
+        LogUtil.log.i(R.string.appName+"");
         OkGo.getInstance().init(this)
                 .addCommonParams(params);
     }
