@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.apple.fivebuy">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".activity.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="icon">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:theme="@style/FirstTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.apple.fivebuy.utils.AddDiaryActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AddBillActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AddCardActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AddNoteActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllBillActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllCardActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllCardItemActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllCompanyItemActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllDiaryActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllNotesActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.AllPlaceItemActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.BaseSettingActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.CloudActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.OldLoginActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.MainActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.OneDayAllActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.PassToActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.RegistActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.SettingActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.UserBaseInfoActivity" />
+        <activity
+            android:name=".activity.GuideActivity"
+            android:theme="@style/AppTheme.Splash" />
+
+
+        <activity android:name=".activity.HtmlActivity" />
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name="com.example.apple.fivebuy.activity.RatingActivity" />
+        <activity android:name=".common.LoginActivity"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <service android:name="com.example.apple.fivebuy.common.update.DownloadService" />
+        <service android:name="com.example.apple.fivebuy.common.DownAPKService" />
+        <activity android:name=".common.CareerChoiceActivity"/>
+    </application>
+
+</manifest>
