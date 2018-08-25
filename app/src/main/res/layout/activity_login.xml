@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.apple.fivebuy.common.LoginActivity">
+    tools:context="com.example.apple.easyspend.common.activity.LoginActivity">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:background="@color/white"
@@ -132,7 +132,7 @@
                 android:background="@color/gay"
                 />
         </RelativeLayout>
-        <com.example.apple.fivebuy.common.SlideView
+        <com.example.apple.easyspend.common.SlideView
             android:id="@+id/slideview"
             android:visibility="gone"
             android:layout_marginRight="20dp"

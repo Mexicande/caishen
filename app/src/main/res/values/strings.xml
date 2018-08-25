@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">51回购</string>
-    <string name="appName">51回购</string>
+    <string name="app_name">萌虎白卡</string>
+    <string name="appName">萌虎白卡</string>
     <!-- error-->
     <string name="net_error">网络请求失败</string>
     <string name="hello_world">Hello world!</string>

@@ -10,7 +10,6 @@
         android:id="@+id/content_view_image"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@mipmap/xianjindai"
 
         />
     <TextView

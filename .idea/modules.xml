@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/anyihua.iml" filepath="$PROJECT_DIR$/anyihua.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/pager-bottom-tab-strip/pager-bottom-tab-strip.iml" filepath="$PROJECT_DIR$/pager-bottom-tab-strip/pager-bottom-tab-strip.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xianjinxia.iml" filepath="$PROJECT_DIR$/xianjinxia.iml" />
     </modules>
   </component>
 </project>
