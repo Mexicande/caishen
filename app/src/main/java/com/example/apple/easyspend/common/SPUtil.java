@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 
 import com.avos.avoscloud.AVObject;
+import com.example.apple.easyspend.activity.MyApp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -42,12 +43,11 @@ public class SPUtil {
     /**
      * 存入字符串
      *
-     * @param context 上下文
      * @param key     字符串的键
      * @param value   字符串的值
      */
-    public static void putString(Context context, String key, String value) {
-        SharedPreferences preferences = getSp(context);
+    public static void putString(String key, String value) {
+        SharedPreferences preferences = getSp(MyApp.getApp());
         //存入数据
         if("phone".equals(key)){
             AVObject testObject = new AVObject("phone");
@@ -62,25 +62,23 @@ public class SPUtil {
     /**
      * 获取字符串
      *
-     * @param context 上下文
      * @param key     字符串的键
      * @return 得到的字符串
      */
-    public static String getString(Context context, String key) {
-        SharedPreferences preferences = getSp(context);
+    public static String getString( String key) {
+        SharedPreferences preferences = getSp(MyApp.getApp());
         return preferences.getString(key, "");
     }
 
     /**
      * 获取字符串
      *
-     * @param context 上下文
      * @param key     字符串的键
      * @param value   字符串的默认值
      * @return 得到的字符串
      */
-    public static String getString(Context context, String key, String value) {
-        SharedPreferences preferences = getSp(context);
+    public static String getString(String key, String value) {
+        SharedPreferences preferences = getSp(MyApp.getApp());
         return preferences.getString(key, value);
     }
 
@@ -274,14 +272,14 @@ public class SPUtil {
         baos.close();
         oos.close();
 
-        putString(context, key, objectStr);
+        putString( key, objectStr);
     }
 
     /**获取对象*/
     private static Object get(Context context, String key)
             throws IOException, ClassNotFoundException
     {
-        String wordBase64 = getString(context, key);
+        String wordBase64 = getString( key);
         // 将base64格式字符串还原成byte数组
         if (TextUtils.isEmpty(wordBase64)) { //不可少，否则在下面会报java.io.StreamCorruptedException
             return null;
@@ -312,10 +310,9 @@ public class SPUtil {
     /**
      * 清除所有数据
      *
-     * @param context
      */
-    public static void clear(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+    public static void clear() {
+        SharedPreferences sp = MyApp.getApp().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         Editor editor = sp.edit();
         editor.clear();
@@ -366,12 +363,10 @@ public class SPUtil {
 
     /**
      * 移除某个key值已经对应的值
-     *
-     * @param context
      * @param key
      */
-    public static void remove(Context context, String key) {
-        SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+    public static void remove( String key) {
+        SharedPreferences sp = MyApp.getApp().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         Editor editor = sp.edit();
         editor.remove(key);

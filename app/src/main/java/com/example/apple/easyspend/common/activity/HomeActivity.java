@@ -16,6 +16,7 @@ import com.example.apple.easyspend.R;
 import com.example.apple.easyspend.adapter.NoTouchViewPager;
 import com.example.apple.easyspend.common.Api;
 import com.example.apple.easyspend.common.MyViewPagerAdapter;
+import com.example.apple.easyspend.common.fragment.CenterFragment;
 import com.example.apple.easyspend.common.update.AppUpdateUtils;
 import com.example.apple.easyspend.common.update.OkGoUpdateHttpUtil;
 import com.example.apple.easyspend.common.update.UpdateAppBean;
@@ -61,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),90);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimaryDark),90);
         ButterKnife.bind(this);
         AndPermission.with(this)
                 .requestCode(200)
@@ -75,12 +76,13 @@ public class HomeActivity extends AppCompatActivity {
         viewPager = (NoTouchViewPager) findViewById(R.id.viewPager);
         navigationController = tab.custom()
                 .addItem(newItem(R.mipmap.iv_home, R.mipmap.iv_home_select,"主页"))
-                .addItem(newItem(R.mipmap.iv_welfare, R.mipmap.iv_welfare_select,"福利"))
+                .addItem(newItem(R.mipmap.iv_welfare, R.mipmap.iv_welfare_select,"产品"))
+                .addItem(newItem(R.mipmap.iv_center, R.mipmap.iv_center_select,"我的"))
                 .build();
-
         ArrayList<Fragment> list=new ArrayList<>();
         list.add(new HomeFragment());
         list.add(new WelfareFragment());
+        list.add(new CenterFragment());
         pagerAdapter=new MyViewPagerAdapter(getSupportFragmentManager(),list);
         viewPager.setAdapter(pagerAdapter);
         //自动适配ViewPager页面切换
@@ -95,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
         NormalItemView normalItemView = new NormalItemView(this);
         normalItemView.initialize(drawable,checkedDrawable,text);
         normalItemView.setTextDefaultColor(Color.GRAY);
-        normalItemView.setTextCheckedColor(getResources().getColor(R.color.theme_color));
+        normalItemView.setTextCheckedColor(getResources().getColor(R.color.colorPrimary));
         return normalItemView;
     }
 

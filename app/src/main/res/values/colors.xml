@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#3D98F1</color>
+    <color name="colorPrimaryDark">#348CE9</color>
     <color name="colorAccent">#FF4081</color>
     <color name="base_white">#f2f3f5</color>
     <color name="color_f4">#f4f4f4</color>
@@ -22,4 +22,5 @@
     <color name="nav_bg_color">#63b953</color>
 
     <color name="status">#03A9F4</color>
+    <color name="text_color_00">#000000</color>
 </resources>

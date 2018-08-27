@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">萌虎白卡</string>
+    <string name="app_name">安逸花</string>
     <string name="appName">萌虎白卡</string>
     <!-- error-->
     <string name="net_error">网络请求失败</string>
@@ -68,4 +68,9 @@
     <string name="gravity_left">left</string>
     <string name="gravity_center">center</string>
     <string name="gravity_right">right</string>
+
+    <string name="error">出错了（┬＿┬）</string>
+    <string name="retry">轻触屏幕重试</string>
+    <string name="empty">暂无数据哦！ </string>
+    <string name="title_activity_prodcut">ProdcutActivity</string>
 </resources>

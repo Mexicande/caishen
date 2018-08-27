@@ -2,6 +2,7 @@ package com.example.apple.easyspend.common.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import com.example.apple.easyspend.R;
 import com.example.apple.easyspend.common.ActivityUtils;
@@ -42,7 +43,7 @@ public class GuideActivity extends AppCompatActivity {
     }
     private void processLogic() {
         // 设置数据源
-        mBackgroundBanner.setData(R.mipmap.lod_01, R.mipmap.lod_02,R.mipmap.lod_03);
+        mBackgroundBanner.setData(null,ImageView.ScaleType.FIT_XY,R.mipmap.lod_01, R.mipmap.lod_02,R.mipmap.lod_03);
 
     }
     @Override

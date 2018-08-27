@@ -34,5 +34,6 @@
 
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_14sp">14sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

@@ -8,9 +8,11 @@
         <item name="android:windowAnimationStyle">@style/activityAnimation</item>
 
     </style>
+
     <style name="MyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
     </style>
+
     <style name="activityAnimation" parent="@android:style/Animation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
@@ -22,19 +24,23 @@
         <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
     </style>
+
     <style name="WrapWrap">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="MyEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/gay</item>
         <item name="colorControlActivated">@color/gay</item>
     </style>
+
     <style name="AppTheme.Splash">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -44,10 +50,12 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
     <style name="MatchMatch">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="FirstTheme" parent="Theme.AppCompat">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@mipmap/loding</item>
@@ -95,6 +103,7 @@
         <item name="android:minHeight">48dp</item>
         <item name="android:maxHeight">48dp</item>
     </style>
+
     <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/room_rating_bar</item>
         <item name="android:minHeight">16dp</item>
@@ -109,6 +118,7 @@
         <item name="android:windowEnterAnimation">@anim/update_app_window_in</item>
         <item name="android:windowExitAnimation">@anim/update_app_window_out</item>
     </style>
+
     <style name="UpdateAppNumberProgressBar_Red">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -125,6 +135,7 @@
         <item name="progress_reached_bar_height">4dp</item>
         <item name="progress_unreached_bar_height">3dp</item>
     </style>
+
     <style name="Base_AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
 
         <!--不设置在6.0以上会出现，宽度不充满屏幕的情况-->
@@ -152,10 +163,15 @@
         <!-- 按钮字体颜色,全部一起改，单个改需要在Java代码中修改 -->
         <!-- <item name="colorAccent">@color/app_main_color</item>-->
     </style>
+
     <style name="CheckTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorControlNormal">@color/gay</item>
         <item name="colorControlActivated">@color/theme_color</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

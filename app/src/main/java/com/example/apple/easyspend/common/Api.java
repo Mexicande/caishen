@@ -11,10 +11,19 @@ public interface Api {
     /**banner **/
     String BANNER=HOST+"vest/banner";
     /**产品 **/
-     String PRODUCT_LSIT=HOST+"vest/product";
+     String PRODUCT_LSIT=HOST+"vest/hotProduct";
     /**iv_welfare_select **/
     String WELFARE=HOST+"vest/welfare";
-
+    /**Credit **/
+    String CREDIT = HOST + "vip/creditCard";
+    /**今日推荐**/
+    String RECOMMEND =HOST+"vest/recommendProduct";
+    /**大全**/
+    String LSIT=HOST+"vest/product";
+    /**帮你借**/
+    String HELP=HOST+"borrow/url";
+    /**筛选**/
+    String SCREEN=HOST+"vest/screening";
     interface   LOGIN{
         /** 新or老用户**/
         String  isOldUser=HOST+"quick/isOldUser";

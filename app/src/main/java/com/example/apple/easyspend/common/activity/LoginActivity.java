@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements VerListener {
                         ToastUtils.showToast(MyApp.getApp(), "验证码错误");
                     }
                 } else {
-                    SPUtil.putString(LoginActivity.this,Contacts.TOKEN, phone);
+                    SPUtil.putString(Contacts.TOKEN, phone);
                     if(isolduser==0){
                         String html = getIntent().getStringExtra("html");
                         startActivity(new Intent(LoginActivity.this, HtmlActivity.class).putExtra("html",html));
@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements VerListener {
                     String msg = date.getString("msg");
                     String isSucess = date.getString("isSuccess");
                     if ("1".equals(isSucess)) {
-                        SPUtil.putString(LoginActivity.this,Contacts.TOKEN, phone);
+                        SPUtil.putString(Contacts.TOKEN, phone);
                         if(isolduser==0){
                             String html = getIntent().getStringExtra("html");
                             startActivity(new Intent(LoginActivity.this, HtmlActivity.class).putExtra("html",html));

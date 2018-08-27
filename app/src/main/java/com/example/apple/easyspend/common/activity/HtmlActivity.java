@@ -15,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apple.easyspend.R;
@@ -33,11 +34,14 @@ public class HtmlActivity extends AppCompatActivity {
     ProgressBar bar;
     @Bind(R.id.webView)
     WebView webView;
+    @Bind(R.id.title)
+    TextView toolbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),90);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color), 90);
         ButterKnife.bind(this);
         CheckInternet();
 
@@ -67,7 +71,10 @@ public class HtmlActivity extends AppCompatActivity {
     }
 
     private void getDate() {
-        String html = getIntent().getStringExtra("html");
+        String title = getIntent().getStringExtra("title");
+        toolbarTitle.setText(title);
+        String html = getIntent().getStringExtra("link");
+
         if (html != null) {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
@@ -140,6 +147,7 @@ public class HtmlActivity extends AppCompatActivity {
             });
         }
     }
+
     public boolean parseScheme(String url) {
         if (url.contains("platformapi/startapp")) {
             try {

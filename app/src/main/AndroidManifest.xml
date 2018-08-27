@@ -27,36 +27,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.apple.easyspend.utils.AddDiaryActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AddBillActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AddCardActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AddNoteActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllBillActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllCardActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllCardItemActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllCompanyItemActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllDiaryActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllNotesActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.AllPlaceItemActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.BaseSettingActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.CloudActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.OldLoginActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.MainActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.OneDayAllActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.PassToActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.RegistActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.SettingActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.UserBaseInfoActivity" />
+        <activity android:name=".utils.AddDiaryActivity" />
+        <activity android:name=".activity.AddBillActivity" />
+        <activity android:name=".activity.AddCardActivity" />
+        <activity android:name=".activity.AddNoteActivity" />
+        <activity android:name=".activity.AllBillActivity" />
+        <activity android:name=".activity.AllCardActivity" />
+        <activity android:name=".activity.AllCardItemActivity" />
+        <activity android:name=".activity.AllCompanyItemActivity" />
+        <activity android:name=".activity.AllDiaryActivity" />
+        <activity android:name=".activity.AllNotesActivity" />
+        <activity android:name=".activity.AllPlaceItemActivity" />
+        <activity android:name=".activity.BaseSettingActivity" />
+        <activity android:name=".activity.CloudActivity" />
+        <activity android:name=".activity.OldLoginActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.OneDayAllActivity" />
+        <activity android:name=".activity.PassToActivity" />
+        <activity android:name=".activity.RegistActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.UserBaseInfoActivity" />
         <activity
             android:name=".common.activity.GuideActivity"
             android:theme="@style/AppTheme.Splash" />
-
-
         <activity android:name=".common.activity.HtmlActivity" />
         <activity android:name=".common.activity.HomeActivity" />
-        <activity android:name="com.example.apple.easyspend.activity.RatingActivity" />
-        <activity android:name=".common.activity.LoginActivity"/>
-       <provider
+        <activity android:name=".activity.RatingActivity" />
+        <activity android:name=".common.activity.LoginActivity" />
+
+        <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
@@ -66,9 +65,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <service android:name="com.example.apple.easyspend.common.update.DownloadService" />
-        <service android:name="com.example.apple.easyspend.common.DownAPKService" />
-        <activity android:name=".common.CareerChoiceActivity"/>
+
+        <service android:name=".common.update.DownloadService" />
+        <service android:name=".common.DownAPKService" />
+
+        <activity android:name=".common.CareerChoiceActivity" />
+        <activity android:name=".common.activity.CreditActivity" />
+        <activity
+            android:name=".common.activity.ProductActivity"
+            android:label="@string/title_activity_prodcut"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

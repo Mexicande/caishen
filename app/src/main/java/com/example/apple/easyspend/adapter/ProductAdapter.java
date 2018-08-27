@@ -8,8 +8,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.apple.easyspend.R;
 import com.example.apple.easyspend.bean.Product;
+import com.example.apple.easyspend.glide.GlideRoundTransform;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,34 +19,9 @@ import java.util.List;
  */
 
 public class ProductAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
-    private ArrayList<String>list;
-
-    public ArrayList<String> getList() {
-        return list;
-    }
-
-    public void setList(ArrayList<String> list) {
-        this.list = list;
-    }
 
     public ProductAdapter(List<Product> data) {
         super(R.layout.product_item, data);
-        list=new ArrayList<>();
-        list.add("2123");
-        list.add("3204");
-        list.add("10394");
-        list.add("4154");
-        list.add("12982");
-        list.add("8732");
-        list.add("6340");
-        list.add("7893");
-        list.add("3092");
-        list.add("4857");
-        list.add("36281");
-        list.add("8981");
-        list.add("12135");
-        list.add("9764");
-
     }
     @Override
     protected void convert(BaseViewHolder helper, Product item) {
@@ -57,20 +32,20 @@ public class ProductAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
 
         int interestAlgorithm = item.getInterest_algorithm();
         if(interestAlgorithm==0){
-            helper.setText(R.id.special_rate,"参考日利率: "+item.getMin_algorithm()+"%");
+            helper.setText(R.id.special_rate,"日利率: "+item.getMin_algorithm()+"%");
         }else {
-            helper.setText(R.id.special_rate,"参考月利率: "+item.getMin_algorithm()+"%");
+            helper.setText(R.id.special_rate,"月利率: "+item.getMin_algorithm()+"%");
         }
-        helper.setText(R.id.tv_people,item.getApply());
         String maximumAmount = item.getMaximum_amount();
         if(maximumAmount.length()>4){
             String substring = maximumAmount.substring(0, maximumAmount.length() - 4);
-            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"-"+substring+"万");
+            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"~"+substring+"万");
         }else {
-            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"-"+maximumAmount);
+            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"~"+maximumAmount);
         }
 
         Glide.with(mContext).load(item.getP_logo()).centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .bitmapTransform(new GlideRoundTransform(mContext,5))
                 .into((ImageView) helper.getView(R.id.iv_logo));
     }
 }
