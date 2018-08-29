@@ -2,37 +2,39 @@ package com.example.apple.easyspend.common.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+import com.allen.library.SuperButton;
 import com.example.apple.easyspend.R;
 import com.example.apple.easyspend.activity.MyApp;
+import com.example.apple.easyspend.bean.LoginEvent;
 import com.example.apple.easyspend.common.Api;
 import com.example.apple.easyspend.common.ApiService;
-import com.example.apple.easyspend.common.CommonUtil;
+import com.example.apple.easyspend.common.CodeUtils;
 import com.example.apple.easyspend.common.Contacts;
 import com.example.apple.easyspend.common.OnRequestDataListener;
 import com.example.apple.easyspend.common.SPUtil;
-import com.example.apple.easyspend.common.SlideView;
-import com.example.apple.easyspend.common.VerListener;
-import com.example.apple.easyspend.common.VerificationFragment;
 import com.example.apple.easyspend.utils.CaptchaTimeCount;
-import com.example.apple.easyspend.utils.RegexUtils;
+import com.example.apple.easyspend.utils.Constants;
 import com.example.apple.easyspend.utils.ToastUtils;
+import com.example.apple.easyspend.utils.editext.PowerfulEditText;
 import com.jaeger.library.StatusBarUtil;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,253 +49,134 @@ import butterknife.OnClick;
 /**
  * @author apple
  */
-public class LoginActivity extends AppCompatActivity implements VerListener {
+public class LoginActivity extends AppCompatActivity {
 
-    @Bind(R.id.back)
-    ImageView back;
-    @Bind(R.id.tv_phone)
-    TextView tvPhone;
+    @Bind(R.id.ed_phone)
+    PowerfulEditText edPhone;
+    @Bind(R.id.result)
+    ImageView result;
+    @Bind(R.id.verify_iv)
+    ImageView verifyIv;
+    @Bind(R.id.et_Result)
+    EditText etResult;
+    @Bind(R.id.layout_Result)
+    RelativeLayout layoutResult;
+    @Bind(R.id.ed_code)
+    PowerfulEditText edCode;
     @Bind(R.id.bt_code)
     Button btCode;
-    @Bind(R.id.et_phone)
-    EditText etPhone;
-    @Bind(R.id.login_phone_r2)
-    RelativeLayout loginPhoneR2;
-    @Bind(R.id.tv_code)
-    TextView tvCode;
-    @Bind(R.id.et_code)
-    EditText etCode;
     @Bind(R.id.layout_code)
     RelativeLayout layoutCode;
-    @Bind(R.id.slideview)
-    SlideView slideview;
-    @Bind(R.id.tv_name)
-    TextView tvName;
-    @Bind(R.id.et_name)
-    EditText etName;
-    @Bind(R.id.tv_card)
-    TextView tvCard;
-    @Bind(R.id.et_card)
-    EditText etCard;
     @Bind(R.id.bt_login)
-    Button btLogin;
-    @Bind(R.id.layout_name)
-    LinearLayout layoutName;
+    SuperButton btLogin;
     private CaptchaTimeCount captchaTimeCount;
-    private int oldNew = 0;
-    private  KProgressHUD hud;
+    private int oldNew = 1;
+    private KProgressHUD hud;
     private String phone;
     private int isolduser;
+
+    private CodeUtils codeUtils;
+    private String yanZhengResult;
+    private String etYanZhengCode;
+    private String yanZhengCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white),40);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 40);
         ButterKnife.bind(this);
-        captchaTimeCount = new CaptchaTimeCount(Contacts.Times.MILLIS_IN_TOTAL, Contacts.Times.COUNT_DOWN_INTERVAL, btCode, this);
         initView();
+        setListener();
+        initYanzheng();
 
     }
+
     private void initView() {
-        slideview.addSlideListener(new SlideView.OnSlideListener() {
-            @Override
-            public void onSlideSuccess() {
-                if (layoutCode.getVisibility() == View.VISIBLE) {
-                    String code = etCode.getText().toString();
-                    if (!TextUtils.isEmpty(code) && code.length() == 4) {
-                        verCode(code);
-                        slideview.reset();
-                    } else {
-                        slideview.reset();
-                        ToastUtils.showToast(MyApp.getApp(), "验证码错误");
-                    }
-                } else {
-                    SPUtil.putString(Contacts.TOKEN, phone);
-                    if(isolduser==0){
-                        String html = getIntent().getStringExtra("html");
-                        startActivity(new Intent(LoginActivity.this, HtmlActivity.class).putExtra("html",html));
-                        finish();
-                    }else {
-                        loginPhoneR2.setVisibility(View.GONE);
-                        layoutName.setVisibility(View.VISIBLE);
-                        slideview.setVisibility(View.GONE);
-                        slideview.reset();
-                    }
-                }
-            }
-        });
+        captchaTimeCount = new CaptchaTimeCount(Constants.MILLIS_IN_TOTAL, Constants.COUNT_DOWN_INTERVAL, btCode, this);
 
         hud = KProgressHUD.create(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setDimAmount(0.5f);
 
     }
-
-    /**
-     * 验证码效验
-     */
-
-    private void verCode(String code) {
-
-        hud.show();
-
-        Map<String,String>map=new HashMap<>();
-        map.put("userphone", phone);
-        map.put("code", code);
-
-        ApiService.GET_SERVICE(Api.LOGIN.CHECKCODE, map, new OnRequestDataListener() {
+    private void setListener() {
+        edPhone.addTextListener(new PowerfulEditText.TextListener() {
             @Override
-            public void requestSuccess(int code, JSONObject data) {
-                hud.dismiss();
-
-                try {
-                    JSONObject date = data.getJSONObject("data");
-                    String msg = date.getString("msg");
-                    String isSucess = date.getString("isSuccess");
-                    if ("1".equals(isSucess)) {
-                        SPUtil.putString(Contacts.TOKEN, phone);
-                        if(isolduser==0){
-                            String html = getIntent().getStringExtra("html");
-                            startActivity(new Intent(LoginActivity.this, HtmlActivity.class).putExtra("html",html));
-                            finish();
-                        }else {
-                            layoutName.setVisibility(View.VISIBLE);
-                            slideview.setVisibility(View.GONE);
-                            layoutCode.setVisibility(View.GONE);
-                            loginPhoneR2.setVisibility(View.GONE);
-                        }
-                    } else {
-                        slideview.reset();
-                    }
-                    ToastUtils.showToast(MyApp.getApp(), msg);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onTextChanged(CharSequence s, int start, int count, int after) {
+                if (!etResult.getText().toString().isEmpty()&& s.toString().length() == 11) {
+                    btLogin.setEnabled(true);
+                    btLogin.setUseShape();
+                } else {
+                    btLogin.setEnabled(false);
+                    btLogin.setUseShape();
                 }
             }
 
             @Override
-            public void requestFailure(int code, String msg) {
-                slideview.reset();
-                hud.dismiss();
-                ToastUtils.showToast(MyApp.getApp(), msg);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        etResult.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (edPhone.getText().toString().length() == 11 && !s.toString().isEmpty() ) {
+                    btLogin.setEnabled(true);
+                    btLogin.setUseShape();
+                } else {
+                    btLogin.setEnabled(false);
+                    btLogin.setUseShape();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-    }
-    @Override
-    public void success() {
-        isOldUser();
-    }
-
-    /**
-     * isOldUser
-     * 新老用户
-     */
-    private void isOldUser() {
-        Map<String,String>map=new HashMap<>();
-        map.put("userphone", phone);
-
-        ApiService.GET_SERVICE(Api.LOGIN.isOldUser, map, new OnRequestDataListener() {
+        edCode.addTextListener(new PowerfulEditText.TextListener() {
             @Override
-            public void requestSuccess(int code, JSONObject data) {
-                try {
-                    JSONObject date = data.getJSONObject("data");
-                    oldNew = date.getInt("isolduser");
-                    isolduser = date.getInt("iden_status");
-                    fillData(oldNew);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onTextChanged(CharSequence s, int start, int count, int after) {
+                if (edPhone.getText().toString().length() == 11 && s.toString().length()==4 ) {
+                    btLogin.setEnabled(true);
+                    btLogin.setUseShape();
+                } else {
+                    btLogin.setEnabled(false);
+                    btLogin.setUseShape();
                 }
             }
 
             @Override
-            public void requestFailure(int code, String msg) {
-                ToastUtils.showToast(MyApp.getApp(), msg);
-            }
-        });
-    }
-
-    /**
-     * 新老用户
-     *
-     * @param isolduser 1：老用户 0：新用户
-     */
-    private void fillData(int isolduser) {
-        if (isolduser == 1) {
-            if (layoutCode.getVisibility() == View.VISIBLE) {
-                layoutCode.setVisibility(View.GONE);
-            }
-            slideview.setVisibility(View.VISIBLE);
-        } else {
-            layoutCode.setVisibility(View.VISIBLE);
-            layoutName.setVisibility(View.GONE);
-            getCode();
-        }
-
-    }
-
-    /**
-     * 验证码获取
-     */
-    private void getCode() {
-        captchaTimeCount.start();
-
-        Map<String,String>map=new HashMap<>();
-        map.put("userphone", phone);
-        ApiService.GET_SERVICE(Api.LOGIN.CODE, map, new OnRequestDataListener() {
-            @Override
-            public void requestSuccess(int code, JSONObject data) {
-                try {
-                    JSONObject date = data.getJSONObject("data");
-                    String msg = date.getString("msg");
-                    String isSucess = date.getString("isSuccess");
-                    if ("1".equals(isSucess)) {
-                        slideview.setVisibility(View.VISIBLE);
-                    }
-                    ToastUtils.showToast(MyApp.getApp(), msg);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void requestFailure(int code, String msg) {
-                ToastUtils.showToast(MyApp.getApp(), msg);
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
     }
 
-
-    @OnClick({R.id.back, R.id.bt_code,R.id.bt_login})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.back:
-                finish();
-                break;
-            case R.id.bt_code:
-                verPhone();
-                break;
-            case R.id.bt_login:
-                break;
-            default:
-                break;
-        }
-    }
-
-
-
-
-    private void verPhone() {
-        phone = etPhone.getText().toString();
-        boolean b = CommonUtil.checkPhone(phone, true);
-        if (b) {
-            VerificationFragment verification = new VerificationFragment();
-            verification.show(getSupportFragmentManager(), "ver");
-        }
+    private void initYanzheng() {
+        codeUtils = CodeUtils.getInstance();
+        Bitmap bitmap = codeUtils.createBitmap();
+        verifyIv.setImageBitmap(bitmap);
+        yanZhengCode = codeUtils.getCode();
+        yanZhengResult = codeUtils.getResult() + "";
     }
 
     @Override
@@ -338,6 +221,185 @@ public class LoginActivity extends AppCompatActivity implements VerListener {
             if (im != null) {
                 im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
             }
+        }
+    }
+    /**
+     * 验证码效验
+     */
+    private void verCode(String code) {
+        hud.show();
+        phone = edPhone.getText().toString();
+        Map<String, String> map = new HashMap<>();
+        map.put("userphone", phone);
+        map.put("code", code);
+
+        ApiService.GET_SERVICE(Api.LOGIN.CHECKCODE, map, new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                hud.dismiss();
+
+                try {
+                    JSONObject date = data.getJSONObject("data");
+                    String msg = date.getString("msg");
+                    String isSucess = date.getString("isSuccess");
+                    if ("1".equals(isSucess)) {
+                        String token = date.getString("token");
+                        String userphone = date.getString("userphone");
+                        SPUtil.putString(Contacts.TOKEN, token);
+                        SPUtil.putString( Contacts.PHONE, userphone);
+                        EventBus.getDefault().post(new LoginEvent(phone));
+                        String title = getIntent().getStringExtra("title");
+                        String link = getIntent().getStringExtra("link");
+                        if(!TextUtils.isEmpty(title)){
+                            Intent intent=new Intent(LoginActivity.this, HtmlActivity.class);
+                            intent.putExtra("title",title);
+                            intent.putExtra("link",link);
+                            startActivity(intent);
+                        }else {
+                            Intent intent=new Intent();
+                            intent.putExtra("phone",phone);
+                            setResult(200,intent);
+                        }
+                        finish();
+                    }
+                    ToastUtils.showToast(MyApp.getApp(), msg);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+                hud.dismiss();
+                ToastUtils.showToast(MyApp.getApp(), msg);
+            }
+        });
+
+    }
+    /**
+     * 验证码获取
+     */
+    private void getCode() {
+        captchaTimeCount.start();
+
+        String phone = edPhone.getText().toString();
+        Map<String, String> map = new HashMap<>();
+        map.put("userphone", phone);
+        ApiService.GET_SERVICE(Api.LOGIN.CODE, map, new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                try {
+                    JSONObject date = data.getJSONObject("data");
+                    String msg = date.getString("msg");
+                    String isSucess = date.getString("isSuccess");
+                    if ("1".equals(isSucess)) {
+                    }
+                    ToastUtils.showToast(MyApp.getApp(), msg);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+                ToastUtils.showToast(MyApp.getApp(), msg);
+            }
+        });
+
+    }
+
+    /**
+     * isOldUser
+     * 新老用户
+     */
+    private void isOldUser() {
+        hud.show();
+        phone = edPhone.getText().toString();
+        Map<String, String> map = new HashMap<>();
+        map.put("userphone", phone);
+        ApiService.GET_SERVICE(Api.LOGIN.isOldUser, map, new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                hud.dismiss();
+                try {
+                    JSONObject date = data.getJSONObject("data");
+                    oldNew = date.getInt("isolduser");
+                    if (oldNew == 1) {
+                        String token = date.getString("token");
+                        String userphone = date.getString("userphone");
+                        SPUtil.putString(Contacts.TOKEN, token);
+                        SPUtil.putString(Contacts.PHONE, userphone);
+                        layoutCode.setVisibility(View.GONE);
+                        EventBus.getDefault().post(new LoginEvent(phone));
+                        String title = getIntent().getStringExtra("title");
+                        String link = getIntent().getStringExtra("link");
+                        if(!TextUtils.isEmpty(title)){
+                            Intent intent=new Intent(LoginActivity.this, HtmlActivity.class);
+                            intent.putExtra("title",title);
+                            intent.putExtra("link",link);
+                            startActivity(intent);
+                        }else {
+                            Intent intent=new Intent();
+                            intent.putExtra("phone",phone);
+                            setResult(200,intent);
+                        }
+                        finish();
+
+                    } else {
+                        layoutResult.setVisibility(View.GONE);
+                        layoutCode.setVisibility(View.VISIBLE);
+                        getCode();
+                        btLogin.setEnabled(false);
+                        btLogin.setUseShape();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+                hud.dismiss();
+                ToastUtils.showToast(MyApp.getApp(), msg);
+            }
+        });
+    }
+
+    @OnClick({R.id.back, R.id.bt_code, R.id.bt_login, R.id.verify_iv})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                break;
+            case R.id.bt_code:
+                getCode();
+                break;
+            case R.id.bt_login:
+                if (oldNew == 1) {
+                    etYanZhengCode = etResult.getText().toString().trim();
+                    if (TextUtils.isEmpty(etYanZhengCode)) {
+                        ToastUtils.showToast(this, "请输入图片里的结果");
+                        return;
+                    }
+                    if (!yanZhengResult.equals(etYanZhengCode)) {
+                        ToastUtils.showToast(this, "图片结果输入有误");
+                        etResult.getText().clear();
+                        initYanzheng();
+                    } else {
+                        isOldUser();
+                    }
+                } else {
+                    String code = edCode.getText().toString();
+                    verCode(code);
+                }
+
+                break;
+            case R.id.verify_iv:
+                initYanzheng();
+                break;
         }
     }
 }

@@ -27,8 +27,7 @@ public class ProductAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
     protected void convert(BaseViewHolder helper, Product item) {
         helper.setText(R.id.tv_name,item.getP_name())
                 .setText(R.id.tv_desc,item.getP_desc())
-                .setText(R.id.average_time_Special,"放款速度: "+item.getFastest_time())
-                .addOnClickListener(R.id.go);
+                .setText(R.id.average_time_Special,"放款速度: "+item.getFastest_time());
 
         int interestAlgorithm = item.getInterest_algorithm();
         if(interestAlgorithm==0){

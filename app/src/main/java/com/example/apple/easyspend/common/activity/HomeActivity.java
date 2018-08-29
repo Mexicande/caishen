@@ -62,7 +62,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimaryDark),90);
+      //  StatusBarUtil.setColor(this, getResources().getColor(R.color.white),114);
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
         ButterKnife.bind(this);
         AndPermission.with(this)
                 .requestCode(200)

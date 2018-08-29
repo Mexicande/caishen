@@ -233,10 +233,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(mRecommendProduct!=null){
-                    Intent intent=new Intent(getActivity(), HtmlActivity.class);
-                    intent.putExtra("title",mRecommendProduct.getP_name());
-                    intent.putExtra("link",mRecommendProduct.getUrl());
-                    startActivity(intent);
+                    String token = SPUtil.getString( Contacts.TOKEN);
+                    if(TextUtils.isEmpty(token)){
+                        Intent intent=new Intent(getActivity(), LoginActivity.class);
+                        intent.putExtra("title",mRecommendProduct.getP_name());
+                        intent.putExtra("link",mRecommendProduct.getUrl());
+                        startActivity(intent);
+                    }else {
+                        Intent intent=new Intent(getActivity(), HtmlActivity.class);
+                        intent.putExtra("title",mRecommendProduct.getP_name());
+                        intent.putExtra("link",mRecommendProduct.getUrl());
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -262,6 +270,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

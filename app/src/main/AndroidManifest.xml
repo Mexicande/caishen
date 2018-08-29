@@ -74,7 +74,11 @@
         <activity
             android:name=".common.activity.ProductActivity"
             android:label="@string/title_activity_prodcut"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".common.activity.FeedbackActivity" />
+        <activity android:name=".common.activity.EmptyActivity" />
+        <activity android:name=".common.activity.SettingActivity" />
+        <activity android:name=".common.activity.AboutActivity"></activity>
     </application>
 
 </manifest>

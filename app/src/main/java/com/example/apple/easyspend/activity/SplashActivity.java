@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),40);
+       // StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),40);
 
         boolean open = SPUtil.getBoolean(SplashActivity.this, "open", false);
       /*  if(!open){

@@ -25,6 +25,7 @@ import com.jaeger.library.StatusBarUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HtmlActivity extends AppCompatActivity {
@@ -34,14 +35,14 @@ public class HtmlActivity extends AppCompatActivity {
     ProgressBar bar;
     @Bind(R.id.webView)
     WebView webView;
-    @Bind(R.id.title)
+    @Bind(R.id.toolbar_title)
     TextView toolbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color), 90);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 90);
         ButterKnife.bind(this);
         CheckInternet();
 
@@ -211,5 +212,10 @@ public class HtmlActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         webView.destroy();
+    }
+
+    @OnClick(R.id.toolbar_back)
+    public void onViewClicked() {
+        finish();
     }
 }

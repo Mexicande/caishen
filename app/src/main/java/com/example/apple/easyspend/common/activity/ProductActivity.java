@@ -35,6 +35,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -42,13 +43,14 @@ import butterknife.ButterKnife;
  */
 public class ProductActivity extends AppCompatActivity {
 
-    @Bind(R.id.title)
-    TextView title;
     @Bind(R.id.RecyclerView)
     RecyclerView mRecyclerView;
     @Bind(R.id.SwipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.toolbar_title)
+    TextView toolbarTitle;
     private ProductAdapter mProductAdapter;
+
     public static void launch(Context context, String identity) {
         Intent intent = new Intent(context, ProductActivity.class);
         intent.putExtra("identity", identity);
@@ -59,8 +61,8 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodcut);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimaryDark),90);
         ButterKnife.bind(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimaryDark), 90);
         initView();
         setListener();
         getData();
@@ -68,24 +70,24 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void setListener() {
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,R.color.colorAccent);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorAccent);
 
         mProductAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Product product = mProductAdapter.getData().get(position);
-                String token = SPUtil.getString( Contacts.TOKEN);
-                    if(TextUtils.isEmpty(token)){
-                        Intent intent=new Intent(ProductActivity.this, LoginActivity.class);
-                        intent.putExtra("title",product.getP_name());
-                        intent.putExtra("link",product.getUrl());
-                        startActivity(intent);
-                    }else {
-                        Intent intent=new Intent(ProductActivity.this, HtmlActivity.class);
-                        intent.putExtra("title",product.getP_name());
-                        intent.putExtra("link",product.getUrl());
-                        startActivity(intent);
-                    }
+                String token = SPUtil.getString(Contacts.TOKEN);
+                if (TextUtils.isEmpty(token)) {
+                    Intent intent = new Intent(ProductActivity.this, LoginActivity.class);
+                    intent.putExtra("title", product.getP_name());
+                    intent.putExtra("link", product.getUrl());
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(ProductActivity.this, HtmlActivity.class);
+                    intent.putExtra("title", product.getP_name());
+                    intent.putExtra("link", product.getUrl());
+                    startActivity(intent);
+                }
             }
         });
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -99,8 +101,8 @@ public class ProductActivity extends AppCompatActivity {
 
 
     private void initView() {
-        title.setText("产品");
-        mProductAdapter=new ProductAdapter(null);
+        toolbarTitle.setText("贷款");
+        mProductAdapter = new ProductAdapter(null);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerViewDecoration decoration = new RecyclerViewDecoration(10);
         mRecyclerView.addItemDecoration(decoration);
@@ -109,8 +111,8 @@ public class ProductActivity extends AppCompatActivity {
 
     private void getData() {
         String identity = getIntent().getStringExtra("identity");
-        Map<String,String>map=new HashMap<>();
-        map.put("identity",identity);
+        Map<String, String> map = new HashMap<>();
+        map.put("identity", identity);
 
         ApiService.GET_SERVICE(Api.SCREEN, map, new OnRequestDataListener() {
             @Override
@@ -130,15 +132,20 @@ public class ProductActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void requestFailure(int code, String msg) {
                 if (mSwipeRefreshLayout.isRefreshing()) {
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
-                ToastUtils.showToast(ProductActivity.this,msg);
+                ToastUtils.showToast(ProductActivity.this, msg);
             }
         });
     }
 
 
+    @OnClick(R.id.toolbar_back)
+    public void onViewClicked() {
+        finish();
+    }
 }

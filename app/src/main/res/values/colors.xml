@@ -23,4 +23,10 @@
 
     <color name="status">#03A9F4</color>
     <color name="text_color_00">#000000</color>
+    <color name="text_color_79">#797979</color>
+    <color name="text_color_32">#323232</color>
+
+    <color name="dispress_color">#97c0ed</color>
+    <color name="press_color">#0867d1</color>
+
 </resources>

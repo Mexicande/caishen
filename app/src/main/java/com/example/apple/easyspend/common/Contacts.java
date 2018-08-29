@@ -9,7 +9,8 @@ public interface Contacts {
     String LEAN_ID="9zeHS4F8GAHi97Fkg0p80FYV-gzGzoHsz";
     String UMENG_KEY="5b17b4eab27b0a31520000a2";
 
-    String TOKEN="phone";
+    String TOKEN="token";
+    String PHONE="phone";
     String MUN="mun";
 
     String LIMIT="limit";
