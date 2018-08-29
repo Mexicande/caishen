@@ -21,20 +21,14 @@ import java.util.List;
 public class ProductAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
 
     public ProductAdapter(List<Product> data) {
-        super(R.layout.product_item, data);
+        super(R.layout.new_item, data);
     }
     @Override
     protected void convert(BaseViewHolder helper, Product item) {
-        helper.setText(R.id.tv_name,item.getP_name())
-                .setText(R.id.tv_desc,item.getP_desc())
-                .setText(R.id.average_time_Special,"放款速度: "+item.getFastest_time());
-
-        int interestAlgorithm = item.getInterest_algorithm();
-        if(interestAlgorithm==0){
-            helper.setText(R.id.special_rate,"日利率: "+item.getMin_algorithm()+"%");
-        }else {
-            helper.setText(R.id.special_rate,"月利率: "+item.getMin_algorithm()+"%");
-        }
+            helper.setText(R.id.tv_ProductName,item.getName());
+        helper .setText(R.id.tv_Summry,item.getProduct_introduction())
+                .setText(R.id.number,item.getSort()+1000+"")
+                .setText(R.id.rate,"日利率: "+item.getMin_algorithm());
         String maximumAmount = item.getMaximum_amount();
         if(maximumAmount.length()>4){
             String substring = maximumAmount.substring(0, maximumAmount.length() - 4);
@@ -43,8 +37,9 @@ public class ProductAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
             helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"~"+maximumAmount);
         }
 
-        Glide.with(mContext).load(item.getP_logo()).centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE)
+        Glide.with(mContext).load(item.getProduct_logo())
                 .bitmapTransform(new GlideRoundTransform(mContext,5))
-                .into((ImageView) helper.getView(R.id.iv_logo));
+                .into((ImageView) helper.getView(R.id.head))
+        ;
     }
 }

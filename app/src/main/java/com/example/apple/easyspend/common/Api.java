@@ -7,7 +7,7 @@ package com.example.apple.easyspend.common;
 public interface Api {
 
      String HOST="http://api.anwenqianbao.com/v2/";
-
+     String URL="http://api.shoujiweidai.cn/v1/product/getProduct";
     /**banner **/
     String BANNER=HOST+"vest/banner";
     /**产品 **/
@@ -24,6 +24,8 @@ public interface Api {
     String HELP=HOST+"borrow/url";
     /**筛选**/
     String SCREEN=HOST+"vest/screening";
+    /**统计**/
+    String APPLY=HOST+"vest/apply";
     interface   LOGIN{
         /** 新or老用户**/
         String  isOldUser=HOST+"quick/isOldUser";

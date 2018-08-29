@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.apple.easyspend.R;
+import com.example.apple.easyspend.adapter.HotAdapter;
 import com.example.apple.easyspend.common.ActivityUtils;
 import com.example.apple.easyspend.common.activity.CreditActivity;
 import com.example.apple.easyspend.common.activity.HtmlActivity;
@@ -30,9 +31,12 @@ import com.example.apple.easyspend.common.activity.LoginActivity;
 import com.example.apple.easyspend.common.OnRequestDataListener;
 import com.example.apple.easyspend.common.SPUtil;
 import com.example.apple.easyspend.common.activity.ProductActivity;
+import com.example.apple.easyspend.utils.BrowsingHistory;
 import com.example.apple.easyspend.utils.RecycleViewDivider;
+import com.example.apple.easyspend.utils.SpacesItemDecoration;
 import com.example.apple.easyspend.utils.ToastUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -67,6 +71,8 @@ public class HomeFragment extends Fragment {
     @Bind(R.id.recylerview)
     RecyclerView recylerview;
     private ProductAdapter mAdapter;
+    private HotAdapter mHotAdapter;
+
     private ArrayList<Product> mProductList = new ArrayList<>();
     private Product mRecommendProduct;
     public HomeFragment() {
@@ -88,12 +94,17 @@ public class HomeFragment extends Fragment {
 
     private void initView() {
         mAdapter = new ProductAdapter(null);
+        mHotAdapter=new HotAdapter(null);
+
         recylerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         recylerview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.recycler_divider));
 
         recylerview.setAdapter(mAdapter);
         View footerView = setView();
         mAdapter.addHeaderView(footerView, 0);
+        mHotRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        mHotRecyclerView.addItemDecoration(new SpacesItemDecoration(10));
+        mHotRecyclerView.setAdapter(mHotAdapter);
         banner.setAdapter(new BGABanner.Adapter<ImageView, Banner>() {
             @Override
             public void fillBannerItem(BGABanner banner, ImageView itemView, Banner model, int position) {
@@ -108,8 +119,14 @@ public class HomeFragment extends Fragment {
     }
 
     private void getDate() {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("type","8");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         /**product_list**/
-        ApiService.GET_SERVICE(Api.PRODUCT_LSIT, null, new OnRequestDataListener() {
+        ApiService.GET_SERVICE(Api.URL, jsonObject, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {
                 if (mRefreshLayout.isRefreshing()) {
@@ -119,12 +136,15 @@ public class HomeFragment extends Fragment {
                     String data = json.getString("data");
                     List<Product> mRecommendList = new Gson().fromJson(data, new TypeToken<List<Product>>() {
                     }.getType());
-                    mAdapter.setNewData(mRecommendList);
+                    if(mRecommendList.size()>10){
+                        mAdapter.setNewData(mRecommendList.subList(0,10));
+                    }else {
+                        mAdapter.setNewData(mRecommendList);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void requestFailure(int code, String msg) {
                 if (mRefreshLayout.isRefreshing()) {
@@ -134,7 +154,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ApiService.GET_SERVICE(Api.PRODUCT_LSIT, null, new OnRequestDataListener() {
+        JSONObject object =new JSONObject();
+        try {
+            object.put("type","7");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ApiService.GET_SERVICE(Api.URL, object , new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {
                 try {
@@ -142,11 +169,7 @@ public class HomeFragment extends Fragment {
                     List<Product> mRecommendList = new Gson().fromJson(data, new TypeToken<List<Product>>() {
                     }.getType());
                     if(!mRecommendList.isEmpty()){
-                        mRecommendProduct = mRecommendList.get(0);
-                        mRecommendAmount.setText(mRecommendProduct.getMaximum_amount());
-                        mRecommendDesc.setText("流程简单  急速到账");
-                        mRecommendName.setText(mRecommendProduct.getP_name());
-                        mRecommendRate.setText(mRecommendProduct.getMin_algorithm());
+                        mHotAdapter.setNewData(mRecommendList);
                     }
 
                 } catch (JSONException e) {
@@ -166,7 +189,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getBanner() {
-        /**banner**/
+      /*  *//**banner**//*
         ApiService.GET_SERVICE(Api.BANNER, new HashMap<String, String>(), new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {
@@ -187,7 +210,7 @@ public class HomeFragment extends Fragment {
             public void requestFailure(int code, String msg) {
 
             }
-        });
+        });*/
     }
 
     /**
@@ -195,16 +218,14 @@ public class HomeFragment extends Fragment {
      *
      * @return
      */
-    private TextView mRecommendName,mRecommendRate,mRecommendAmount,mRecommendDesc;
+    private RecyclerView mHotRecyclerView;
 
 
     private View setView() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.header_layout, null);
+        mHotRecyclerView=view.findViewById(R.id.hot_recycler);
+
         banner = (BGABanner) view.findViewById(R.id.banner_fresco_demo_content);
-        mRecommendName=view.findViewById(R.id.name);
-        mRecommendAmount=view.findViewById(R.id.amount);
-        mRecommendRate=view.findViewById(R.id.rate);
-        mRecommendDesc=view.findViewById(R.id.desc);
         ButterKnife.findById(view,R.id.layout_credit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,25 +250,7 @@ public class HomeFragment extends Fragment {
                 ProductActivity.launch(getActivity(),"4");
             }
         });
-        ButterKnife.findById(view,R.id.bt_apply).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mRecommendProduct!=null){
-                    String token = SPUtil.getString( Contacts.TOKEN);
-                    if(TextUtils.isEmpty(token)){
-                        Intent intent=new Intent(getActivity(), LoginActivity.class);
-                        intent.putExtra("title",mRecommendProduct.getP_name());
-                        intent.putExtra("link",mRecommendProduct.getUrl());
-                        startActivity(intent);
-                    }else {
-                        Intent intent=new Intent(getActivity(), HtmlActivity.class);
-                        intent.putExtra("title",mRecommendProduct.getP_name());
-                        intent.putExtra("link",mRecommendProduct.getUrl());
-                        startActivity(intent);
-                    }
-                }
-            }
-        });
+
         return view;
 
     }
@@ -279,13 +282,15 @@ public class HomeFragment extends Fragment {
                 String token = SPUtil.getString( Contacts.TOKEN);
                 if(TextUtils.isEmpty(token)){
                     Intent intent=new Intent(getActivity(), LoginActivity.class);
-                    intent.putExtra("title",product.getP_name());
-                    intent.putExtra("link",product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
+                    intent.putExtra("id",product.getId());
                     startActivity(intent);
                 }else {
+                    new BrowsingHistory().execute(product.getId());
                     Intent intent=new Intent(getActivity(), HtmlActivity.class);
-                    intent.putExtra("title",product.getP_name());
-                    intent.putExtra("link",product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
                     startActivity(intent);
                 }
             }

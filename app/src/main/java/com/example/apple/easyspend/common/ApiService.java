@@ -18,19 +18,18 @@ import java.util.Map;
 
 public class ApiService {
     /**
-     * @param params
      * @param listener
      * banner
      */
-    public static void GET_SERVICE(String url,Map<String,String> params, final OnRequestDataListener listener) {
-        newExcuteJsonPost(url,params,listener);
+    public static void GET_SERVICE(String url,JSONObject jsonObject, final OnRequestDataListener listener) {
+        newExcuteJsonPost(url,jsonObject,listener);
     }
 
-    private static void newExcuteJsonPost(String url, Map<String,String> params, final OnRequestDataListener listener){
+    private static void newExcuteJsonPost(String url, JSONObject jsonObject, final OnRequestDataListener listener){
         final String netError = MyApp.getApp().getString(R.string.net_error);
         OkGo.<String>post(url)
                 .tag(MyApp.getApp())
-                .params(params,false)
+                .upJson(jsonObject)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {

@@ -27,6 +27,7 @@ import com.example.apple.easyspend.common.CodeUtils;
 import com.example.apple.easyspend.common.Contacts;
 import com.example.apple.easyspend.common.OnRequestDataListener;
 import com.example.apple.easyspend.common.SPUtil;
+import com.example.apple.easyspend.utils.BrowsingHistory;
 import com.example.apple.easyspend.utils.CaptchaTimeCount;
 import com.example.apple.easyspend.utils.Constants;
 import com.example.apple.easyspend.utils.ToastUtils;
@@ -229,28 +230,33 @@ public class LoginActivity extends AppCompatActivity {
     private void verCode(String code) {
         hud.show();
         phone = edPhone.getText().toString();
-        Map<String, String> map = new HashMap<>();
-        map.put("userphone", phone);
-        map.put("code", code);
 
-        ApiService.GET_SERVICE(Api.LOGIN.CHECKCODE, map, new OnRequestDataListener() {
+        JSONObject object=new JSONObject();
+        try {
+            object.put("userphone",phone);
+            object.put("app_name",getString(R.string.app_name));
+            object.put("terminal","2");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        ApiService.GET_SERVICE(Api.LOGIN.CHECKCODE, object, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
                 hud.dismiss();
 
                 try {
                     JSONObject date = data.getJSONObject("data");
-                    String msg = date.getString("msg");
-                    String isSucess = date.getString("isSuccess");
-                    if ("1".equals(isSucess)) {
                         String token = date.getString("token");
-                        String userphone = date.getString("userphone");
                         SPUtil.putString(Contacts.TOKEN, token);
-                        SPUtil.putString( Contacts.PHONE, userphone);
+                        SPUtil.putString( Contacts.PHONE, phone);
                         EventBus.getDefault().post(new LoginEvent(phone));
                         String title = getIntent().getStringExtra("title");
                         String link = getIntent().getStringExtra("link");
                         if(!TextUtils.isEmpty(title)){
+                            String id = getIntent().getStringExtra("id");
+                            new BrowsingHistory().execute(id);
                             Intent intent=new Intent(LoginActivity.this, HtmlActivity.class);
                             intent.putExtra("title",title);
                             intent.putExtra("link",link);
@@ -261,8 +267,6 @@ public class LoginActivity extends AppCompatActivity {
                             setResult(200,intent);
                         }
                         finish();
-                    }
-                    ToastUtils.showToast(MyApp.getApp(), msg);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -271,39 +275,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void requestFailure(int code, String msg) {
                 hud.dismiss();
-                ToastUtils.showToast(MyApp.getApp(), msg);
-            }
-        });
-
-    }
-    /**
-     * 验证码获取
-     */
-    private void getCode() {
-        captchaTimeCount.start();
-
-        String phone = edPhone.getText().toString();
-        Map<String, String> map = new HashMap<>();
-        map.put("userphone", phone);
-        ApiService.GET_SERVICE(Api.LOGIN.CODE, map, new OnRequestDataListener() {
-            @Override
-            public void requestSuccess(int code, JSONObject data) {
-                try {
-                    JSONObject date = data.getJSONObject("data");
-                    String msg = date.getString("msg");
-                    String isSucess = date.getString("isSuccess");
-                    if ("1".equals(isSucess)) {
-                    }
-                    ToastUtils.showToast(MyApp.getApp(), msg);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void requestFailure(int code, String msg) {
                 ToastUtils.showToast(MyApp.getApp(), msg);
             }
         });
@@ -317,25 +288,34 @@ public class LoginActivity extends AppCompatActivity {
     private void isOldUser() {
         hud.show();
         phone = edPhone.getText().toString();
-        Map<String, String> map = new HashMap<>();
-        map.put("userphone", phone);
-        ApiService.GET_SERVICE(Api.LOGIN.isOldUser, map, new OnRequestDataListener() {
+
+        JSONObject object=new JSONObject();
+        try {
+            object.put("userphone",phone);
+            object.put("app_name",getString(R.string.app_name));
+            object.put("terminal","2");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ApiService.GET_SERVICE(Api.LOGIN.isOldUser, object, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
                 hud.dismiss();
                 try {
                     JSONObject date = data.getJSONObject("data");
-                    oldNew = date.getInt("isolduser");
+                    oldNew = date.getInt("is_user");
                     if (oldNew == 1) {
                         String token = date.getString("token");
-                        String userphone = date.getString("userphone");
                         SPUtil.putString(Contacts.TOKEN, token);
-                        SPUtil.putString(Contacts.PHONE, userphone);
+                        SPUtil.putString(Contacts.PHONE, phone);
                         layoutCode.setVisibility(View.GONE);
                         EventBus.getDefault().post(new LoginEvent(phone));
                         String title = getIntent().getStringExtra("title");
                         String link = getIntent().getStringExtra("link");
                         if(!TextUtils.isEmpty(title)){
+                            String id = getIntent().getStringExtra("id");
+                            new BrowsingHistory().execute(id);
                             Intent intent=new Intent(LoginActivity.this, HtmlActivity.class);
                             intent.putExtra("title",title);
                             intent.putExtra("link",link);
@@ -350,7 +330,6 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         layoutResult.setVisibility(View.GONE);
                         layoutCode.setVisibility(View.VISIBLE);
-                        getCode();
                         btLogin.setEnabled(false);
                         btLogin.setUseShape();
                     }
@@ -375,7 +354,7 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.back:
                 break;
             case R.id.bt_code:
-                getCode();
+                isOldUser();
                 break;
             case R.id.bt_login:
                 if (oldNew == 1) {

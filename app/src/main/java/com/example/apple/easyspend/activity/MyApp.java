@@ -18,7 +18,9 @@ import com.example.apple.easyspend.dao.DaoSession;
 import com.example.apple.easyspend.dao.ImagerBean;
 import com.example.apple.easyspend.dao.User;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
+import com.lzy.okgo.utils.HeaderParser;
 import com.meituan.android.walle.WalleChannelReader;
 import com.umeng.analytics.MobclickAgent;
 
@@ -76,12 +78,10 @@ public class MyApp extends Application {
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,Contacts.UMENG_KEY
                 ,channel));
-        HttpParams params=new HttpParams();
-        String name = getString(R.string.appName);
-        params.put("market",channel);
-        params.put("name", name);
+        HttpHeaders parser=new HttpHeaders();
+        parser.put("channel",channel);
         OkGo.getInstance().init(this)
-                .addCommonParams(params);
+                .addCommonHeaders(parser);
     }
     public DaoMaster getDaoMaster(Context context){
         if (daoMaster == null){

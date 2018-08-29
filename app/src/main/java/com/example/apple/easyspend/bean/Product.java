@@ -1,7 +1,6 @@
 package com.example.apple.easyspend.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -13,47 +12,30 @@ import java.util.List;
 public class Product implements Serializable {
 
     /**
-     * id : 1
-     * p_name : 米米米
-     * url : https://www.baidu.com
-     * p_logo : http://or2eh71ll.bkt.clouddn.com/150131715167829.png?e=1501320751&token=Npg7Sanmf4z8uv3mvwwffjOvoCMYN8Ezm4T8pDrC:DcwqOuHKq8MTwaxqV_TEmb1jbTg=
-     * p_desc : 快速审批，当天到账。
-     * min_algorithm : 0.900
-     * fastest_time : 2小时
+     * id : 105
+     * sort : 54
+     * name : 金兔宝
+     * link : https://jtb.jintubao0574.com/jtb/regist/17af1be4e2dc452ab6a98fbb6043e2c1
+     * product_logo : http://or2eh71ll.bkt.clouddn.com/153352880950250.png?e=1533532409&token=Npg7Sanmf4z8uv3mvwwffjOvoCMYN8Ezm4T8pDrC:OV0rUsb5kyLlzXPzncQBD9pMgEk=
+     * product_introduction : 一分钟认证，十分钟审核，半小时放款
+     * interest_algorithm : 日利率
+     * min_algorithm : 0.060%
+     * max_algorithm : 0.060%
+     * maximum_amount : 200000
      * minimum_amount : 500
-     * maximum_amount : 5000
-     * labels : []
      */
 
     private String id;
-    private String p_name;
-    private String url;
-    private String p_logo;
-    private String p_desc;
+    private int sort;
+    private String name;
+    private String link;
+    private String product_logo;
+    private String product_introduction;
+    private String interest_algorithm;
     private String min_algorithm;
-    private String fastest_time;
-    private String minimum_amount;
+    private String max_algorithm;
     private String maximum_amount;
-    private int interest_algorithm;
-    private String apply;
-
-    public String getApply() {
-        return apply;
-    }
-
-    public void setApply(String apply) {
-        this.apply = apply;
-    }
-
-    public int getInterest_algorithm() {
-        return interest_algorithm;
-    }
-
-    public void setInterest_algorithm(int interest_algorithm) {
-        this.interest_algorithm = interest_algorithm;
-    }
-
-    private List<?> labels;
+    private String minimum_amount;
 
     public String getId() {
         return id;
@@ -63,36 +45,52 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getP_name() {
-        return p_name;
+    public int getSort() {
+        return sort;
     }
 
-    public void setP_name(String p_name) {
-        this.p_name = p_name;
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 
-    public String getUrl() {
-        return url;
+    public String getName() {
+        return name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getP_logo() {
-        return p_logo;
+    public String getLink() {
+        return link;
     }
 
-    public void setP_logo(String p_logo) {
-        this.p_logo = p_logo;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public String getP_desc() {
-        return p_desc;
+    public String getProduct_logo() {
+        return product_logo;
     }
 
-    public void setP_desc(String p_desc) {
-        this.p_desc = p_desc;
+    public void setProduct_logo(String product_logo) {
+        this.product_logo = product_logo;
+    }
+
+    public String getProduct_introduction() {
+        return product_introduction;
+    }
+
+    public void setProduct_introduction(String product_introduction) {
+        this.product_introduction = product_introduction;
+    }
+
+    public String getInterest_algorithm() {
+        return interest_algorithm;
+    }
+
+    public void setInterest_algorithm(String interest_algorithm) {
+        this.interest_algorithm = interest_algorithm;
     }
 
     public String getMin_algorithm() {
@@ -103,20 +101,12 @@ public class Product implements Serializable {
         this.min_algorithm = min_algorithm;
     }
 
-    public String getFastest_time() {
-        return fastest_time;
+    public String getMax_algorithm() {
+        return max_algorithm;
     }
 
-    public void setFastest_time(String fastest_time) {
-        this.fastest_time = fastest_time;
-    }
-
-    public String getMinimum_amount() {
-        return minimum_amount;
-    }
-
-    public void setMinimum_amount(String minimum_amount) {
-        this.minimum_amount = minimum_amount;
+    public void setMax_algorithm(String max_algorithm) {
+        this.max_algorithm = max_algorithm;
     }
 
     public String getMaximum_amount() {
@@ -127,11 +117,11 @@ public class Product implements Serializable {
         this.maximum_amount = maximum_amount;
     }
 
-    public List<?> getLabels() {
-        return labels;
+    public String getMinimum_amount() {
+        return minimum_amount;
     }
 
-    public void setLabels(List<?> labels) {
-        this.labels = labels;
+    public void setMinimum_amount(String minimum_amount) {
+        this.minimum_amount = minimum_amount;
     }
 }

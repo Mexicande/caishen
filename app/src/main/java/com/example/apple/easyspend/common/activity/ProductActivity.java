@@ -20,6 +20,7 @@ import com.example.apple.easyspend.common.ApiService;
 import com.example.apple.easyspend.common.Contacts;
 import com.example.apple.easyspend.common.OnRequestDataListener;
 import com.example.apple.easyspend.common.SPUtil;
+import com.example.apple.easyspend.utils.BrowsingHistory;
 import com.example.apple.easyspend.utils.RecyclerViewDecoration;
 import com.example.apple.easyspend.utils.ToastUtils;
 import com.google.gson.Gson;
@@ -79,13 +80,15 @@ public class ProductActivity extends AppCompatActivity {
                 String token = SPUtil.getString(Contacts.TOKEN);
                 if (TextUtils.isEmpty(token)) {
                     Intent intent = new Intent(ProductActivity.this, LoginActivity.class);
-                    intent.putExtra("title", product.getP_name());
-                    intent.putExtra("link", product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
+                    intent.putExtra("id",product.getId());
                     startActivity(intent);
                 } else {
+                    new BrowsingHistory().execute(product.getId());
                     Intent intent = new Intent(ProductActivity.this, HtmlActivity.class);
-                    intent.putExtra("title", product.getP_name());
-                    intent.putExtra("link", product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
                     startActivity(intent);
                 }
             }
@@ -111,10 +114,15 @@ public class ProductActivity extends AppCompatActivity {
 
     private void getData() {
         String identity = getIntent().getStringExtra("identity");
-        Map<String, String> map = new HashMap<>();
-        map.put("identity", identity);
 
-        ApiService.GET_SERVICE(Api.SCREEN, map, new OnRequestDataListener() {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("type",identity);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ApiService.GET_SERVICE(Api.SCREEN, jsonObject, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {
                 if (mSwipeRefreshLayout.isRefreshing()) {

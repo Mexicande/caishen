@@ -69,16 +69,21 @@
         <service android:name=".common.update.DownloadService" />
         <service android:name=".common.DownAPKService" />
 
-        <activity android:name=".common.CareerChoiceActivity" />
-        <activity android:name=".common.activity.CreditActivity" />
+        <activity android:name=".common.activity.CreditActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".common.activity.ProductActivity"
             android:label="@string/title_activity_prodcut"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".common.activity.FeedbackActivity" />
-        <activity android:name=".common.activity.EmptyActivity" />
-        <activity android:name=".common.activity.SettingActivity" />
-        <activity android:name=".common.activity.AboutActivity"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".common.activity.FeedbackActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".common.activity.EmptyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".common.activity.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".common.activity.AboutActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

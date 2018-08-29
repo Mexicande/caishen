@@ -35,20 +35,20 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),40);
-
-        boolean open = SPUtil.getBoolean(SplashActivity.this, "open", false);
-      /*  if(!open){
+      /*  boolean open = SPUtil.getBoolean(SplashActivity.this, "open", false);
+        if(!open){
             setUrl();
         }else {
             mHandler.sendEmptyMessageDelayed(3, 1000);
         }*/
         mHandler.sendEmptyMessageDelayed(3, 1000);
 
+
     }
     private void setUrl() {
-
+/*
         Map<String,String>map=new HashMap<>();
-        String name = getResources().getString(R.string.appName);
+        String name = getResources().getString(R.string.app_name);
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         map.put("name",name);
         map.put("market",channel);
@@ -75,7 +75,7 @@ public class SplashActivity extends AppCompatActivity {
             public void requestFailure(int code, String msg) {
 
             }
-        });
+        });*/
 
     }
 

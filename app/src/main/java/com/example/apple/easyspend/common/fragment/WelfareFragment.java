@@ -26,9 +26,11 @@ import com.example.apple.easyspend.common.Api;
 import com.example.apple.easyspend.common.ApiService;
 import com.example.apple.easyspend.common.OnRequestDataListener;
 import com.example.apple.easyspend.common.activity.LoginActivity;
+import com.example.apple.easyspend.utils.BrowsingHistory;
 import com.example.apple.easyspend.utils.RecyclerViewDecoration;
 import com.example.apple.easyspend.utils.ToastUtils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,13 +87,15 @@ public class WelfareFragment extends Fragment {
                 String token = SPUtil.getString( Contacts.TOKEN);
                 if(TextUtils.isEmpty(token)){
                     Intent intent=new Intent(getActivity(), LoginActivity.class);
-                    intent.putExtra("title",product.getP_name());
-                    intent.putExtra("link",product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
+                    intent.putExtra("id",product.getId());
                     startActivity(intent);
                 }else {
+                    new BrowsingHistory().execute(product.getId());
                     Intent intent=new Intent(getActivity(), HtmlActivity.class);
-                    intent.putExtra("title",product.getP_name());
-                    intent.putExtra("link",product.getUrl());
+                    intent.putExtra("title",product.getName());
+                    intent.putExtra("link",product.getLink());
                     startActivity(intent);
                 }
             }
@@ -135,7 +139,14 @@ public class WelfareFragment extends Fragment {
     }
 
     private void getData() {
-        ApiService.GET_SERVICE(Api.LSIT, new HashMap<String, String>(), new OnRequestDataListener() {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("type","6");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ApiService.GET_SERVICE(Api.URL, jsonObject, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject json) {
                 if(mSwip.isRefreshing()){
@@ -143,12 +154,10 @@ public class WelfareFragment extends Fragment {
                 }
                 try {
                     String data = json.getString("data");
-                    Gson gson = new Gson();
-                    Product[] welfare = gson.fromJson(data, Product[].class);
-                    if (welfare.length > 0) {
-                        List<Product> welfare1 = Arrays.asList(welfare);
-                        mProductAdapter.setNewData(welfare1);
-                    }
+
+                    List<Product> mRecommendList = new Gson().fromJson(data, new TypeToken<List<Product>>() {
+                    }.getType());
+                        mProductAdapter.setNewData(mRecommendList);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -163,7 +172,7 @@ public class WelfareFragment extends Fragment {
             }
         });
 
-        ApiService.GET_SERVICE(Api.HELP, null, new OnRequestDataListener() {
+    /*    ApiService.GET_SERVICE(Api.HELP, null, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
                 try {
@@ -181,7 +190,7 @@ public class WelfareFragment extends Fragment {
 
             }
         });
-
+*/
     }
 
     @Override
