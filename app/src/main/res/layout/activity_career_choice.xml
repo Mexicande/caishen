@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="信  用  卡:"/>
-        <com.example.apple.easyspend.common.flowlayout.TagFlowLayout
+        <com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout
             android:id="@+id/id_flowlayout"
             app:max_select="1"
             app:tag_gravity="left"
@@ -38,7 +38,7 @@
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.example.apple.easyspend.common.flowlayout.TagFlowLayout>
+        </com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginRight="20dp"
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="名下房产:"/>
-        <com.example.apple.easyspend.common.flowlayout.TagFlowLayout
+        <com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout
             android:id="@+id/house_flowlayout"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
@@ -61,7 +61,7 @@
             app:max_select="1"
             app:tag_gravity="left"
             android:layout_height="wrap_content">
-        </com.example.apple.easyspend.common.flowlayout.TagFlowLayout>
+        </com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginRight="20dp"
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="名下汽车:"/>
-        <com.example.apple.easyspend.common.flowlayout.TagFlowLayout
+        <com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout
             android:id="@+id/car_flowlayout"
             android:layout_marginLeft="10dp"
             app:max_select="1"
@@ -84,7 +84,7 @@
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.example.apple.easyspend.common.flowlayout.TagFlowLayout>
+        </com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginRight="20dp"
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="您的职业:"/>
-        <com.example.apple.easyspend.common.flowlayout.TagFlowLayout
+        <com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout
             android:id="@+id/occupation_flowlayout"
             app:max_select="1"
             app:tag_gravity="left"
@@ -107,7 +107,7 @@
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.example.apple.easyspend.common.flowlayout.TagFlowLayout>
+        </com.example.expense.DoubleFlower.common.flowlayout.TagFlowLayout>
     </LinearLayout>
 
     <LinearLayout

@@ -17,7 +17,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_width="80dp"
             android:layout_height="80dp">
-            <com.example.apple.easyspend.utils.RoundImageView
+            <com.example.expense.DoubleFlower.utils.RoundImageView
                 android:src="@mipmap/ic_img_user_default"
                 android:id="@+id/head_img"
                 android:layout_width="74dp"
@@ -57,7 +57,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.example.apple.easyspend.utils.AutofitTextView
+        <com.example.expense.DoubleFlower.utils.AutofitTextView
             android:id="@+id/username"
             android:textColor="#fff"
             android:text="auto"

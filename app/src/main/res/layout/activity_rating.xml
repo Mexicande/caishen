@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.apple.easyspend.activity.RatingActivity">
+    tools:context="com.example.expense.DoubleFlower.activity.RatingActivity">
     <RatingBar
         android:id="@+id/room_ratingbar"
         style="@style/roomRatingBar"

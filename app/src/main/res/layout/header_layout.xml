@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/base_white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <cn.bingoogolapple.bgabanner.BGABanner
@@ -100,14 +101,13 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content" >
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:padding="10dp"
+            android:background="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
@@ -131,8 +131,6 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hot_recycler"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </android.support.v7.widget.RecyclerView>
