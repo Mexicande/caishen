@@ -25,7 +25,7 @@ public interface Api {
     /**筛选**/
     String SCREEN=HOST+"vest/screening";
     /**统计**/
-    String APPLY=HOST+"vest/apply";
+    String APPLY=HOST+"product/apply";
     interface   LOGIN{
         /** 新or老用户**/
         String  isOldUser=HOST+"sms/getCode";

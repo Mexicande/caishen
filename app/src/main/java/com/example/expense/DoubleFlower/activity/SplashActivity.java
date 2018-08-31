@@ -41,8 +41,8 @@ public class SplashActivity extends AppCompatActivity {
         }else {
             mHandler.sendEmptyMessageDelayed(3, 1000);
         }*/
-        mHandler.sendEmptyMessageDelayed(3, 1000);
-
+     //   mHandler.sendEmptyMessageDelayed(3, 1000);
+        setWelcome();
 
     }
     private void setUrl() {

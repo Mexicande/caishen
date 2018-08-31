@@ -313,7 +313,7 @@ public class HomeFragment extends Fragment {
         mHotAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Product product = mAdapter.getData().get(position);
+                Product product = mHotAdapter.getData().get(position);
                 String token = SPUtil.getString( Contacts.TOKEN);
                 if(TextUtils.isEmpty(token)){
                     Intent intent=new Intent(getActivity(), LoginActivity.class);

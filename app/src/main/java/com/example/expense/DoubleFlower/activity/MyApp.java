@@ -79,7 +79,7 @@ public class MyApp extends Application {
         MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,Contacts.UMENG_KEY
                 ,channel));
         HttpHeaders parser=new HttpHeaders();
-        parser.put("channel","xiaomi");
+        parser.put("channel",channel);
         OkGo.getInstance().init(this)
                 .addCommonHeaders(parser);
     }

@@ -7,7 +7,7 @@ package com.example.expense.DoubleFlower.common;
 public interface Contacts {
     String LEAN_KEY="1Xractc2sikvNt5m6r9GP7sK";
     String LEAN_ID="9zeHS4F8GAHi97Fkg0p80FYV-gzGzoHsz";
-    String UMENG_KEY="5b17b4eab27b0a31520000a2";
+    String UMENG_KEY="5b88ec49f29d985e2b000077";
 
     String TOKEN="token";
     String PHONE="phone";
