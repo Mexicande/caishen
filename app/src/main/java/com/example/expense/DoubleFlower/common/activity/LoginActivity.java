@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.bt_login)
     SuperButton btLogin;
     private CaptchaTimeCount captchaTimeCount;
-    private int oldNew = 1;
+    private int oldNew = 0;
     private KProgressHUD hud;
     private String phone;
     private int isolduser;
@@ -358,7 +358,7 @@ public class LoginActivity extends AppCompatActivity {
                 isOldUser();
                 break;
             case R.id.bt_login:
-                if (oldNew == 1) {
+                if (oldNew == 0) {
                     etYanZhengCode = etResult.getText().toString().trim();
                     if (TextUtils.isEmpty(etYanZhengCode)) {
                         ToastUtils.showToast(this, "请输入图片里的结果");

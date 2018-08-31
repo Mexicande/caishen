@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">安逸花</string>
+    <string name="app_name">借花花</string>
     <!-- error-->
     <string name="net_error">网络请求失败</string>
     <string name="hello_world">Hello world!</string>

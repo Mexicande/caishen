@@ -43,7 +43,14 @@
                 android:textColor="@color/color_66"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="极速贷"/>
+                android:text="极速贷款"/>
+            <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/text_color_79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1万-10万"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/layout_small"
@@ -62,6 +69,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="小额贷"/>
+            <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/text_color_79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500-5万"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/layout_capacity"
@@ -80,6 +94,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="智能贷"/>
+            <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/text_color_79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身份证即可贷"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/layout_credit"
@@ -97,7 +118,14 @@
                 android:textSize="13sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="信用卡"/>
+                android:text="任意贷"/>
+            <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/text_color_79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="无门槛"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

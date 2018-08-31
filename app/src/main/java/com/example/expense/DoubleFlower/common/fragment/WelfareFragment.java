@@ -111,7 +111,7 @@ public class WelfareFragment extends Fragment {
     private void initView() {
         title.setText("贷款大全");
         mProductAdapter = new ProductAdapter(null);
-        mProductAdapter.setHeaderView(getHeader());
+       // mProductAdapter.setHeaderView(getHeader());
         mRecylerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerViewDecoration decoration = new RecyclerViewDecoration(10);
         mRecylerview.addItemDecoration(decoration);

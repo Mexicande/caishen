@@ -241,9 +241,11 @@ public class HomeFragment extends Fragment {
         ButterKnife.findById(view,R.id.layout_credit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProductActivity.launch(getActivity(),"9");
+                ProductActivity.launch(getActivity(),"11");
             }
         });
+
+
         ButterKnife.findById(view,R.id.layout_spped).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

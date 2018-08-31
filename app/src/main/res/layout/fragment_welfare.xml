@@ -33,7 +33,7 @@
             android:textSize="14sp"
             android:textColor="#F55C63"
             android:layout_height="wrap_content"
-            android:text="申请五款以上产品,贷款成功率80%以上"/>
+            android:text="据统计,申请五款以上产品,贷款成功率80%以上"/>
     </LinearLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout
