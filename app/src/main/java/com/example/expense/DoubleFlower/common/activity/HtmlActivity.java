@@ -44,32 +44,12 @@ public class HtmlActivity extends AppCompatActivity {
         setContentView(R.layout.activity_html);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 90);
         ButterKnife.bind(this);
-        CheckInternet();
+        getDate();
+
 
     }
 
-    private void CheckInternet() {
-        ConnectivityManager con = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        boolean wifi = con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
-        boolean internet = con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
-        if (wifi | internet) {
-            //执行相关操作
-            getDate();
 
-        } else {
-            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("网络异常，请检查网络")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            finish();
-                        }
-                    })
-                    .show();
-
-
-        }
-    }
 
     private void getDate() {
         String title = getIntent().getStringExtra("title");
