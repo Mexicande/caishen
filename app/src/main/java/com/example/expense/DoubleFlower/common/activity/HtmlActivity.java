@@ -55,8 +55,10 @@ public class HtmlActivity extends AppCompatActivity {
         String title = getIntent().getStringExtra("title");
         toolbarTitle.setText(title);
         String html = getIntent().getStringExtra("link");
-
-        if (html != null) {
+        Uri uri = Uri.parse(html);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+       /* if (html != null) {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -126,7 +128,7 @@ public class HtmlActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
+        }*/
     }
 
     public boolean parseScheme(String url) {
@@ -181,10 +183,9 @@ public class HtmlActivity extends AppCompatActivity {
      * 应用内拦截下载
      */
     private void downloadApk(String url) {
-
-        Intent intent = new Intent(this, DownAPKService.class);
-        intent.putExtra("apk_url", url);
-        startService(intent);
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 

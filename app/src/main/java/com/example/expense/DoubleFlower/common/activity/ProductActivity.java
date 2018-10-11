@@ -2,6 +2,7 @@ package com.example.expense.DoubleFlower.common.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -87,10 +88,14 @@ public class ProductActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     new BrowsingHistory().execute(product.getId());
-                    Intent intent = new Intent(ProductActivity.this, HtmlActivity.class);
+
+                    Uri uri = Uri.parse(product.getLink());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                /*    Intent intent = new Intent(ProductActivity.this, HtmlActivity.class);
                     intent.putExtra("title",product.getName());
                     intent.putExtra("link",product.getLink());
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
         });
