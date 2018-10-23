@@ -336,6 +336,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
 
                     } else {
+                        captchaTimeCount.start();
                         layoutResult.setVisibility(View.GONE);
                         layoutCode.setVisibility(View.VISIBLE);
                         btLogin.setEnabled(false);
