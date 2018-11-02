@@ -84,31 +84,15 @@ dependencies {
     implementation project(':library')
     implementation 'cn.leancloud.android:avoscloud-sdk:v4.6.4'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/greendao-1.3.0-beta-1.jar')
-    implementation files('libs/picasso-2.5.2.jar')
-    implementation files('libs/universal-image-loader-1.9.4.jar')
-    //ratingBar
-    implementation 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3'
-    implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
-    implementation 'com.github.githubwing:ByeBurger:1.2.3'
     //implementation GradleCompatible
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
-    implementation 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
-    implementation 'com.patrickpissurno:ripple-effect:1.3.1'
-    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
-    implementation 'com.github.frank-zhu:pullzoomview:1.0.0'
-    implementation 'com.afollestad.material-dialogs:commons:0.9.3.0'
     implementation 'cn.pedant.sweetalert:library:1.3'
-    implementation 'com.github.devlight:infinitecycleviewpager:1.0.2'
-    implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     implementation 'com.jaeger.statusbaruitl:library:1.3.6'
-    implementation 'com.xingliuhua:xlhratingbar_lib:1.0.1'
     implementation 'com.github.lygttpod:SuperTextView:2.1.8'
     implementation 'org.greenrobot:eventbus:3.1.1'
-
     implementation 'com.umeng.analytics:analytics:latest.integration'
     implementation 'com.jakewharton:butterknife:7.0.1'
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'

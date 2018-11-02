@@ -34,50 +34,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // StatusBarUtil.setColor(this, getResources().getColor(R.color.theme_color),40);
-      /*  boolean open = SPUtil.getBoolean(SplashActivity.this, "open", false);
-        if(!open){
-            setUrl();
-        }else {
-            mHandler.sendEmptyMessageDelayed(3, 1000);
-        }*/
-     //   mHandler.sendEmptyMessageDelayed(3, 1000);
         setWelcome();
 
     }
-    private void setUrl() {
-/*
-        Map<String,String>map=new HashMap<>();
-        String name = getResources().getString(R.string.app_name);
-        String channel = WalleChannelReader.getChannel(this.getApplicationContext());
-        map.put("name",name);
-        map.put("market",channel);
-        ApiService.GET_SERVICE(Api.STATUS.getStatus, map, new OnRequestDataListener() {
-            @Override
-            public void requestSuccess(int code, JSONObject json) {
 
-                try {
-                    JSONObject data = json.getJSONObject("data");
-                    int status = data.getInt("status");
-                    if(status==0){
-                        mHandler.sendEmptyMessageDelayed(2
-                                , 1000);
-                    }else {
-                        SPUtil.putBoolean(SplashActivity.this,"open",true);
-                        setWelcome();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-            @Override
-            public void requestFailure(int code, String msg) {
-
-            }
-        });*/
-
-    }
 
 
     private static class SwitchHandler extends Handler {
@@ -92,10 +53,6 @@ public class SplashActivity extends AppCompatActivity {
             SplashActivity activity = mWeakReference.get();
             if (activity != null) {
                 switch (msg.what){
-                    case 2:
-                        MainActivity.launch(activity);
-                        activity.finish();
-                        break;
                     case 3:
                         HomeActivity.launch(activity);
                         activity.finish();
