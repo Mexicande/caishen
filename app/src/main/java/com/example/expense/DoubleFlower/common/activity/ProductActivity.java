@@ -108,7 +108,6 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
-    private ImageView mBanner;
     private void initView() {
         toolbarTitle.setText("智能贷");
         mProductAdapter = new ProductAdapter(null);
@@ -116,24 +115,10 @@ public class ProductActivity extends AppCompatActivity {
         RecyclerViewDecoration decoration = new RecyclerViewDecoration(10);
         mRecyclerView.addItemDecoration(decoration);
         mRecyclerView.setAdapter(mProductAdapter);
-        View view =getLayoutInflater().inflate(R.layout.product_header_layout, null);
-        mBanner=view.findViewById(R.id.banner);
-        mProductAdapter.setHeaderView(view);
-
     }
 
     private void getData() {
         String identity = getIntent().getStringExtra("identity");
-        if(identity.equals("4")){
-            toolbarTitle.setText("急速贷款");
-            mBanner.setImageResource(R.mipmap.icon_pro_list_rate);
-        }else if(identity.equals("11")){
-            toolbarTitle.setText("任意贷");
-            mBanner.setImageResource(R.mipmap.icon_pro_list_any);
-        }else if(identity.equals("9")){
-            toolbarTitle.setText("小额贷");
-            mBanner.setImageResource(R.mipmap.icon_pro_list_speed);
-        }
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("type",identity);
