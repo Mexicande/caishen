@@ -34,13 +34,6 @@
                 android:text="立即登录"/>
          </LinearLayout>
       </RelativeLayout>
-      <com.zyp.cardview.YcCardView
-          android:background="@color/white"
-          app:cardCornerRadius="10dp"
-          app:cardElevation="0.5dp"
-          android:layout_margin="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
          <LinearLayout
              android:orientation="vertical"
              android:layout_width="match_parent"
@@ -50,7 +43,6 @@
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sLeftIconRes="@mipmap/icon_schedule"
                 app:sLeftTextString="贷款进度"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
@@ -61,44 +53,21 @@
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sDividerLineType="none"
-                app:sLeftIconRes="@mipmap/icon_free"
                 app:sLeftTextString="我的免息券"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
          </LinearLayout>
-      </com.zyp.cardview.YcCardView>
-      <android.support.v7.widget.CardView
-          android:background="@color/white"
-          app:cardCornerRadius="10dp"
-          app:cardElevation="0.5dp"
-          android:layout_marginLeft="10dp"
-          android:layout_marginRight="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
          <LinearLayout
              android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
             <com.allen.library.SuperTextView
-                android:id="@+id/super_safe"
-                app:sShapeCornersRadius="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:sLeftIconRes="@mipmap/icon_safe"
-                app:sLeftTextString="安全小贴士"
-                app:sLeftTextColor="@color/color_33"
-                app:sRightIconRes="@mipmap/icon_arrow_right"
-                >
-            </com.allen.library.SuperTextView>
-            <com.allen.library.SuperTextView
                 android:id="@+id/super_feedback"
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sLeftIconRes="@mipmap/icon_feeback"
                 app:sLeftTextString="意见反馈"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
@@ -109,15 +78,11 @@
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sLeftIconRes="@mipmap/icon_setting"
                 app:sLeftTextString="设置"
-                app:sDividerLineType="none"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
          </LinearLayout>
-      </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

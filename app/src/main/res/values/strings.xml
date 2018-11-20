@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">安逸花贷款</string>
+    <string name="app_name">安逸花</string>
     <string name="App_name">安逸花</string>
     <!-- error-->
     <string name="net_error">网络异常</string>
