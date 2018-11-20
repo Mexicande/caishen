@@ -36,7 +36,8 @@ public class MyApp extends Application {
         super.onCreate();
         instance = this;
         initOkGo();
-        sp = super.getSharedPreferences("eSetting", Context.MODE_PRIVATE);//只能被本应用访问
+        sp = super.getSharedPreferences("eSetting", Context.MODE_PRIVATE);
+        //只能被本应用访问
     }
 
     public static MyApp getApp(){
@@ -54,17 +55,4 @@ public class MyApp extends Application {
     }
 
 
-    List<Activity> myActivity = new ArrayList<>();
-    public void addToList(Activity activity){
-        myActivity.add(activity);
-    }
-
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        for (Activity activity : myActivity){
-            activity.finish();
-        }
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
 }
