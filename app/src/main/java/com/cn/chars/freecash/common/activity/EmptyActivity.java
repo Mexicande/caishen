@@ -19,8 +19,6 @@ public class EmptyActivity extends AppCompatActivity {
     ImageView toolbarBack;
     @Bind(R.id.toolbar_title)
     TextView toolbarTitle;
-    @Bind(R.id.nodate)
-    ImageView nodate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

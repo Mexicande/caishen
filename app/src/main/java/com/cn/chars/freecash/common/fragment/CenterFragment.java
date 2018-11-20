@@ -91,7 +91,7 @@ public class CenterFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.super_schedule, R.id.super_free, R.id.super_safe,
+    @OnClick({R.id.super_schedule, R.id.super_free,
             R.id.super_feedback, R.id.super_setting,R.id.layout_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -116,12 +116,6 @@ public class CenterFragment extends Fragment {
                     intent.putExtra("title","我的免息券");
                     startActivity(intent);
                 }
-                break;
-            case R.id.super_safe:
-                Intent intent = new Intent(getActivity(), HtmlActivity.class);
-                intent.putExtra("title", "安全小贴士");
-                intent.putExtra("link", "http://m.anwenqianbao.com/#/minTips");
-                startActivity(intent);
                 break;
             case R.id.super_feedback:
                 ActivityUtils.startActivity(FeedbackActivity.class);

@@ -1,8 +1,11 @@
 package com.cn.chars.freecash.common.fragment;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,11 @@ import com.cn.chars.freecash.R;
 import com.cn.chars.freecash.bean.Banner;
 import com.cn.chars.freecash.common.Api;
 import com.cn.chars.freecash.common.ApiService;
+import com.cn.chars.freecash.common.Contacts;
 import com.cn.chars.freecash.common.OnRequestDataListener;
+import com.cn.chars.freecash.common.SPUtil;
+import com.cn.chars.freecash.common.activity.HtmlActivity;
+import com.cn.chars.freecash.common.activity.LoginActivity;
 import com.cn.chars.freecash.common.activity.ProductActivity;
 import com.google.gson.Gson;
 
@@ -57,7 +64,32 @@ public class MainFragment extends Fragment {
         ButterKnife.bind(this, view);
         initView();
         getBanner();
+        setListener();
         return view;
+    }
+
+    private void setListener() {
+        banner.setDelegate(new BGABanner.Delegate<ImageView, Banner>() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, ImageView itemView, Banner model, int position) {
+                String token = SPUtil.getString( Contacts.TOKEN);
+                if(TextUtils.isEmpty(token)){
+                    Intent intent=new Intent(getActivity(), LoginActivity.class);
+                    intent.putExtra("title",model.getAdvername());
+                    intent.putExtra("link",model.getApp());
+                    startActivity(intent);
+                }else {
+                   /* Uri uri = Uri.parse(model.getApp());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);*/
+                    Intent intent=new Intent(getActivity(), HtmlActivity.class);
+                    intent.putExtra("title",model.getAdvername());
+                    intent.putExtra("link",model.getApp());
+                    startActivity(intent);
+
+                }
+            }
+        });
     }
 
     private void initView() {

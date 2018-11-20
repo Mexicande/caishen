@@ -126,8 +126,8 @@
         <RelativeLayout
             android:id="@+id/layout_code"
             android:layout_marginTop="10dp"
-            android:visibility="gone"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="45dp">
             <com.cn.chars.freecash.utils.editext.PowerfulEditText
                 android:id="@+id/ed_code"
@@ -165,16 +165,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:background="@drawable/code_bg"/>
-            <View
-                android:layout_below="@id/ed_code"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_width="match_parent"
-                android:background="@color/color_e3"
-                android:layout_height="0.5dp"/>
         </RelativeLayout>
 
-
+        <View
+            android:visibility="gone"
+            android:id="@+id/view"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:background="@color/color_e3"
+            android:layout_height="0.3dp"/>
 
         <com.allen.library.SuperButton
             android:id="@+id/bt_login"

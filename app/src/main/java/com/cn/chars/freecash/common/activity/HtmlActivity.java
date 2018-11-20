@@ -54,10 +54,8 @@ public class HtmlActivity extends AppCompatActivity {
         String title = getIntent().getStringExtra("title");
         toolbarTitle.setText(title);
         String html = getIntent().getStringExtra("link");
-        Uri uri = Uri.parse(html);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
-       /* if (html != null) {
+
+        if (html != null) {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -88,7 +86,6 @@ public class HtmlActivity extends AppCompatActivity {
                     if (parseScheme(url)) {
 
                     } else {
-
                         WebView.HitTestResult hitTestResult = view.getHitTestResult();
                         if (!TextUtils.isEmpty(url) && hitTestResult == null) {
                             view.loadUrl(url);
@@ -127,7 +124,7 @@ public class HtmlActivity extends AppCompatActivity {
                     }
                 }
             });
-        }*/
+        }
     }
 
     public boolean parseScheme(String url) {

@@ -7,16 +7,9 @@
     android:layout_height="match_parent"
    >
     <include layout="@layout/layout_toolbar"/>
-    <ImageView
-        android:id="@+id/nodate"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icon_no_data"/>
     <TextView
         android:textColor="@color/gay"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/nodate"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

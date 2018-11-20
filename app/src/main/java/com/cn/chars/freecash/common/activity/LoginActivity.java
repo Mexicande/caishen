@@ -3,7 +3,6 @@ package com.cn.chars.freecash.common.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
@@ -19,13 +18,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.allen.library.SuperButton;
-import com.cn.chars.freecash.activity.MyApp;
-import com.cn.chars.freecash.bean.LoginEvent;
-import com.cn.chars.freecash.utils.BrowsingHistory;
-import com.cn.chars.freecash.utils.CaptchaTimeCount;
-import com.cn.chars.freecash.utils.Constants;
-import com.cn.chars.freecash.utils.ToastUtils;
-import com.cn.chars.freecash.utils.editext.PowerfulEditText;
 import com.cn.chars.freecash.R;
 import com.cn.chars.freecash.activity.MyApp;
 import com.cn.chars.freecash.bean.LoginEvent;
@@ -46,9 +38,6 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -78,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
     RelativeLayout layoutCode;
     @Bind(R.id.bt_login)
     SuperButton btLogin;
+    @Bind(R.id.view)
+    View view;
     private CaptchaTimeCount captchaTimeCount;
     private int oldNew = 0;
     private KProgressHUD hud;
@@ -109,11 +100,12 @@ public class LoginActivity extends AppCompatActivity {
                 .setDimAmount(0.5f);
 
     }
+
     private void setListener() {
         edPhone.addTextListener(new PowerfulEditText.TextListener() {
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after) {
-                if (!etResult.getText().toString().isEmpty()&& s.toString().length() == 11) {
+                if (!etResult.getText().toString().isEmpty() && s.toString().length() == 11) {
                     btLogin.setEnabled(true);
                     btLogin.setUseShape();
                 } else {
@@ -140,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (edPhone.getText().toString().length() == 11 && !s.toString().isEmpty() ) {
+                if (edPhone.getText().toString().length() == 11 && !s.toString().isEmpty()) {
                     btLogin.setEnabled(true);
                     btLogin.setUseShape();
                 } else {
@@ -158,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
         edCode.addTextListener(new PowerfulEditText.TextListener() {
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after) {
-                if (edPhone.getText().toString().length() == 11 && s.toString().length()==4 ) {
+                if (edPhone.getText().toString().length() == 11 && s.toString().length() == 4) {
                     btLogin.setEnabled(true);
                     btLogin.setUseShape();
                 } else {
@@ -232,6 +224,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     /**
      * 验证码效验
      */
@@ -239,12 +232,12 @@ public class LoginActivity extends AppCompatActivity {
         hud.show();
         phone = edPhone.getText().toString();
 
-        JSONObject object=new JSONObject();
+        JSONObject object = new JSONObject();
         try {
-            object.put("userphone",phone);
-            object.put("app_name",getString(R.string.app_name));
-            object.put("terminal","2");
-            object.put("code",code);
+            object.put("userphone", phone);
+            object.put("app_name", getString(R.string.app_name));
+            object.put("terminal", "2");
+            object.put("code", code);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -257,24 +250,29 @@ public class LoginActivity extends AppCompatActivity {
 
                 try {
                     JSONObject date = data.getJSONObject("data");
-                        String token = date.getString("token");
-                        SPUtil.putString(Contacts.TOKEN, token);
-                        SPUtil.putString( Contacts.PHONE, phone);
-                        EventBus.getDefault().post(new LoginEvent(phone));
-                        String title = getIntent().getStringExtra("title");
-                        String link = getIntent().getStringExtra("link");
-                        if(!TextUtils.isEmpty(title)){
-                            String id = getIntent().getStringExtra("id");
-                            new BrowsingHistory().execute(id);
-                            Uri uri = Uri.parse(link);
+                    String token = date.getString("token");
+                    SPUtil.putString(Contacts.TOKEN, token);
+                    SPUtil.putString(Contacts.PHONE, phone);
+                    EventBus.getDefault().post(new LoginEvent(phone));
+                    String title = getIntent().getStringExtra("title");
+                    String link = getIntent().getStringExtra("link");
+                    if (!TextUtils.isEmpty(title)) {
+                        String id = getIntent().getStringExtra("id");
+                        new BrowsingHistory().execute(id);
+                           /* Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            startActivity(intent);
-                        }else {
-                            Intent intent=new Intent();
-                            intent.putExtra("phone",phone);
-                            setResult(200,intent);
-                        }
-                        finish();
+                            startActivity(intent);*/
+
+                        Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
+                        intent.putExtra("title", title);
+                        intent.putExtra("link", link);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent();
+                        intent.putExtra("phone", phone);
+                        setResult(200, intent);
+                    }
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -297,11 +295,11 @@ public class LoginActivity extends AppCompatActivity {
         hud.show();
         phone = edPhone.getText().toString();
 
-        JSONObject object=new JSONObject();
+        JSONObject object = new JSONObject();
         try {
-            object.put("userphone",phone);
-            object.put("app_name",getString(R.string.app_name));
-            object.put("terminal","2");
+            object.put("userphone", phone);
+            object.put("app_name", getString(R.string.app_name));
+            object.put("terminal", "2");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -321,21 +319,29 @@ public class LoginActivity extends AppCompatActivity {
                         EventBus.getDefault().post(new LoginEvent(phone));
                         String title = getIntent().getStringExtra("title");
                         String link = getIntent().getStringExtra("link");
-                        if(!TextUtils.isEmpty(title)){
+                        if (!TextUtils.isEmpty(title)) {
                             String id = getIntent().getStringExtra("id");
                             new BrowsingHistory().execute(id);
-                            Uri uri = Uri.parse(link);
+                          /*  Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            startActivity(intent);*/
+
+                            Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
+                            intent.putExtra("title", title);
+                            intent.putExtra("link", link);
                             startActivity(intent);
-                        }else {
-                            Intent intent=new Intent();
-                            intent.putExtra("phone",phone);
-                            setResult(200,intent);
+
+
+                        } else {
+                            Intent intent = new Intent();
+                            intent.putExtra("phone", phone);
+                            setResult(200, intent);
                         }
                         finish();
 
                     } else {
                         captchaTimeCount.start();
+                        view.setVisibility(View.VISIBLE);
                         layoutResult.setVisibility(View.GONE);
                         layoutCode.setVisibility(View.VISIBLE);
                         btLogin.setEnabled(false);
