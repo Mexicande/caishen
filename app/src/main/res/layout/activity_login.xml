@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_white"
-    tools:context="com.example.expense.DoubleFlower.common.activity.LoginActivity">
+    android:background="@mipmap/login_bg"
+    tools:context="com.cn.chars.freecash.common.activity.LoginActivity">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="50dp">
         <ImageView
             android:id="@+id/back"
@@ -22,14 +21,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="登录"
+            android:text=""
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:textSize="18sp"/>
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,47 +41,53 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@mipmap/logo"/>
-        <com.example.expense.DoubleFlower.utils.editext.PowerfulEditText
+
+        <com.cn.chars.freecash.utils.editext.PowerfulEditText
             android:id="@+id/ed_phone"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="25dp"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="15dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="45dp"
             android:paddingBottom="8dp"
             android:paddingRight="25dp"
             android:drawablePadding="15dp"
             app:leftDrawableWidth="20dp"
             app:leftDrawableHeight="20dp"
-            android:drawableLeft="@mipmap/icon_phone"
+            android:drawableLeft="@mipmap/ic_phone"
             android:lines="1"
-            android:hint="手机号"
+            android:hint="请输入手机号码"
             android:maxLength="11"
+            android:textColorHint="@color/grey_b2b2b2"
             android:inputType="phone"
             android:textSize="15sp"
-            android:background="@mipmap/icon_et_bg"
-            android:textColorHint="@color/gay"
+            android:background="@null"
             app:theme="@style/MyEditText"
             app:funcType="canClear"
             />
+        <View
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:background="@color/color_e3"
+            android:layout_height="0.3dp"/>
 
         <RelativeLayout
+            android:layout_marginTop="10dp"
             android:id="@+id/layout_Result"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@mipmap/icon_et_bg"
             android:layout_width="match_parent"
-            android:paddingLeft="25dp"
-            android:layout_height="65dp">
+            android:paddingLeft="15dp"
+            android:layout_height="45dp">
             <ImageView
                 android:id="@+id/result"
-                android:paddingBottom="8dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/icon_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@mipmap/ic_result"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <ImageView
                 android:id="@+id/verify_iv"
@@ -90,9 +95,9 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="5dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="5dp"
                 />
             <EditText
                 android:id="@+id/et_Result"
@@ -101,7 +106,7 @@
                 android:layout_toRightOf="@id/result"
                 android:paddingBottom="8dp"
                 android:textSize="15sp"
-                android:textColorHint="@color/gay"
+                android:textColorHint="@color/grey_b2b2b2"
                 android:theme="@style/MyEditText"
                 android:layout_centerVertical="true"
                 android:layout_width="match_parent"
@@ -112,39 +117,46 @@
                 android:inputType="number"
                 android:background="@null"/>
         </RelativeLayout>
+        <View
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:background="@color/color_e3"
+            android:layout_height="0.3dp"/>
         <RelativeLayout
             android:id="@+id/layout_code"
+            android:layout_marginTop="10dp"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="65dp">
-            <com.example.expense.DoubleFlower.utils.editext.PowerfulEditText
+            android:layout_height="45dp">
+            <com.cn.chars.freecash.utils.editext.PowerfulEditText
                 android:id="@+id/ed_code"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="45dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="25dp"
-                android:paddingLeft="25dp"
+                android:paddingLeft="18dp"
                 android:drawablePadding="15dp"
                 app:leftDrawableWidth="20dp"
                 app:leftDrawableHeight="20dp"
-                android:drawableLeft="@mipmap/icon_pw"
+                android:drawableLeft="@mipmap/ic_password"
                 android:lines="1"
                 android:hint="验证码"
                 android:maxLength="6"
                 android:inputType="number"
                 android:textSize="15sp"
-                android:background="@mipmap/icon_et_bg"
-                android:textColorHint="@color/gay"
+                android:background="@null"
+                android:textColorHint="@color/grey_b2b2b2"
                 app:theme="@style/MyEditText"
                 app:funcType="canWatchPwd"
                 />
             <Button
                 android:id="@+id/bt_code"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="13dp"
+                android:layout_centerVertical="true"
                 android:textColor="@color/colorPrimary"
                 android:text="获取验证码"
                 android:textSize="12sp"
@@ -153,6 +165,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:background="@drawable/code_bg"/>
+            <View
+                android:layout_below="@id/ed_code"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="match_parent"
+                android:background="@color/color_e3"
+                android:layout_height="0.5dp"/>
         </RelativeLayout>
 
 
@@ -161,7 +180,7 @@
             android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            app:sCornersRadius="12dp"
+            app:sCornersRadius="5dp"
             android:text="立即登录"
             android:textSize="16sp"
             android:textColor="@color/white"
@@ -170,21 +189,11 @@
             android:enabled="false"
             app:sSelectorNormalColor="@color/colorPrimary"
             app:sSelectorPressedColor="@color/press_color"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             />
     </LinearLayout>
 
-    <TextView
-        android:layout_marginBottom="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/gay"
-        android:text="借花花©版权所有"/>
+
 </RelativeLayout>

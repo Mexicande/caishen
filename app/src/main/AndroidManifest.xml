@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.expense.DoubleFlower">
+    package="com.cn.chars.freecash">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -38,20 +38,18 @@
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="android:authorities">
+            >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <service android:name=".common.update.DownloadService" />
         <service android:name=".common.DownAPKService" />
 
         <activity android:name=".common.activity.CreditActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".common.activity.ProductActivity"
-            android:label="@string/title_activity_prodcut"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"/>
         <activity android:name=".common.activity.FeedbackActivity"

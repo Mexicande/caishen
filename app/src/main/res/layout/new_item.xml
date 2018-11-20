@@ -8,8 +8,6 @@
     android:layout_gravity="center"
     android:background="#ffffff"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="#FCFCFC"
-    app:cardElevation="0.1dp"
     >
     <RelativeLayout
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/base_white"
     android:layout_height="match_parent"
-    tools:context="com.example.expense.DoubleFlower.common.activity.SettingActivity">
+    tools:context="com.cn.chars.freecash.common.activity.SettingActivity">
     <include layout="@layout/layout_toolbar"/>
     <com.allen.library.SuperTextView
         android:layout_marginTop="20dp"
