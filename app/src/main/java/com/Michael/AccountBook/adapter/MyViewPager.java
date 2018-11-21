@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.adapter;
+package com.Michael.AccountBook.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

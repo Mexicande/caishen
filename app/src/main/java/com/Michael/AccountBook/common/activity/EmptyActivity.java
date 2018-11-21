@@ -1,13 +1,13 @@
-package com.Michael.AccountBook.freecash.common.activity;
+package com.Michael.AccountBook.common.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.Michael.AccountBook.freecash.utils.StatusBarUtil;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.utils.StatusBarUtil;
+import com.Michael.AccountBook.utils.StatusBarUtil;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.utils.StatusBarUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

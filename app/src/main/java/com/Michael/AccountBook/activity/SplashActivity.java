@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.activity;
+package com.Michael.AccountBook.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,15 +6,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
-import com.Michael.AccountBook.freecash.utils.SharedPreferencesUtil;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.common.Api;
-import com.Michael.AccountBook.freecash.common.ApiService;
-import com.Michael.AccountBook.freecash.common.OnRequestDataListener;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.common.activity.GuideActivity;
-import com.Michael.AccountBook.freecash.common.activity.HomeActivity;
-import com.Michael.AccountBook.freecash.utils.SharedPreferencesUtil;
+import com.Michael.AccountBook.utils.SharedPreferencesUtil;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.common.Api;
+import com.Michael.AccountBook.common.ApiService;
+import com.Michael.AccountBook.common.OnRequestDataListener;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.common.activity.GuideActivity;
+import com.Michael.AccountBook.common.activity.HomeActivity;
+import com.Michael.AccountBook.utils.SharedPreferencesUtil;
 import com.jaeger.library.StatusBarUtil;
 import com.meituan.android.walle.WalleChannelReader;
 import com.umeng.analytics.MobclickAgent;

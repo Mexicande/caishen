@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 /**
  * Created by apple on 2018/5/17.

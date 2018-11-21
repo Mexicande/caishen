@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 
 import android.content.Context;
@@ -18,9 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.utils.ToastUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

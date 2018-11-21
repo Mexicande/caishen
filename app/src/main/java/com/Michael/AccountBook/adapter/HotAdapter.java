@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.adapter;
+package com.Michael.AccountBook.adapter;
 
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.Michael.AccountBook.freecash.bean.Product;
-import com.Michael.AccountBook.freecash.glide.GlideCircleTransform;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.bean.Product;
-import com.Michael.AccountBook.freecash.glide.GlideCircleTransform;
+import com.Michael.AccountBook.bean.Product;
+import com.Michael.AccountBook.glide.GlideCircleTransform;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.bean.Product;
+import com.Michael.AccountBook.glide.GlideCircleTransform;
 
 import java.util.List;
 

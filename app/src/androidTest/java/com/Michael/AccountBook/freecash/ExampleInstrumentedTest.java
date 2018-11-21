@@ -1,4 +1,4 @@
-package com.Michael.chars.freecash;
+package com.Michael.AccountBook;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -19,7 +19,7 @@
  *  and unicode 2017 that are used for separating the items in a list.
  */
 
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

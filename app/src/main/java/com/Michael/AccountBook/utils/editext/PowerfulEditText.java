@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.utils.editext;
+package com.Michael.AccountBook.utils.editext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.EditText;
 
-import com.Michael.AccountBook.freecash.R;
+import com.Michael.AccountBook.R;
 
 
 public class PowerfulEditText extends AppCompatEditText {

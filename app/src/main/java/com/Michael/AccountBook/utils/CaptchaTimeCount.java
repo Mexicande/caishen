@@ -1,11 +1,11 @@
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
-import com.Michael.AccountBook.freecash.R;
+import com.Michael.AccountBook.R;
 
 
 /**

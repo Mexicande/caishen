@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,10 +17,10 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.WindowManager;
 
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.utils.ToastUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

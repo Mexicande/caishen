@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 /**
  * Created by tantan on 2017/8/7.

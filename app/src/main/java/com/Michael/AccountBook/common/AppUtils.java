@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import com.Michael.AccountBook.freecash.activity.MyApp;
+import com.Michael.AccountBook.activity.MyApp;
 
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;

@@ -1,13 +1,13 @@
-package com.Michael.AccountBook.freecash.adapter;
+package com.Michael.AccountBook.adapter;
 
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.Michael.AccountBook.freecash.bean.WelfareBean;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.bean.WelfareBean;
+import com.Michael.AccountBook.bean.WelfareBean;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.bean.WelfareBean;
 
 import java.util.List;
 

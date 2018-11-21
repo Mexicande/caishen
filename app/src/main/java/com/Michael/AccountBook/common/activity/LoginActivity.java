@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.activity;
+package com.Michael.AccountBook.common.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,20 +18,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.allen.library.SuperButton;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.bean.LoginEvent;
-import com.Michael.AccountBook.freecash.common.Api;
-import com.Michael.AccountBook.freecash.common.ApiService;
-import com.Michael.AccountBook.freecash.common.CodeUtils;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.OnRequestDataListener;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.utils.BrowsingHistory;
-import com.Michael.AccountBook.freecash.utils.CaptchaTimeCount;
-import com.Michael.AccountBook.freecash.utils.Constants;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.utils.editext.PowerfulEditText;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.bean.LoginEvent;
+import com.Michael.AccountBook.common.Api;
+import com.Michael.AccountBook.common.ApiService;
+import com.Michael.AccountBook.common.CodeUtils;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.OnRequestDataListener;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.utils.BrowsingHistory;
+import com.Michael.AccountBook.utils.CaptchaTimeCount;
+import com.Michael.AccountBook.utils.Constants;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.utils.editext.PowerfulEditText;
 import com.jaeger.library.StatusBarUtil;
 import com.kaopiz.kprogresshud.KProgressHUD;
 

@@ -1,13 +1,13 @@
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.common.Api;
-import com.Michael.AccountBook.freecash.common.ApiService;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.OnRequestDataListener;
-import com.Michael.AccountBook.freecash.common.SPUtil;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.common.Api;
+import com.Michael.AccountBook.common.ApiService;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.OnRequestDataListener;
+import com.Michael.AccountBook.common.SPUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;

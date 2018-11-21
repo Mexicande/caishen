@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.activity;
+package com.Michael.AccountBook.activity;
 
 import android.app.Activity;
 import android.app.Application;
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-import com.Michael.AccountBook.freecash.common.Contacts;
+import com.Michael.AccountBook.common.Contacts;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpHeaders;
 import com.meituan.android.walle.WalleChannelReader;
@@ -48,6 +48,7 @@ public class MyApp extends Application {
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,Contacts.UMENG_KEY
                 ,channel));
+
         HttpHeaders parser=new HttpHeaders();
         parser.put("channel",channel);
         OkGo.getInstance().init(this)

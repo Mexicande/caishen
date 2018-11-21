@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 public interface Constants {
 

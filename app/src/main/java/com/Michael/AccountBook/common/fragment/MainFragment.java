@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.fragment;
+package com.Michael.AccountBook.common.fragment;
 
 
 import android.content.Intent;
@@ -14,16 +14,16 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.bean.Banner;
-import com.Michael.AccountBook.freecash.common.Api;
-import com.Michael.AccountBook.freecash.common.ApiService;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.OnRequestDataListener;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.common.activity.HtmlActivity;
-import com.Michael.AccountBook.freecash.common.activity.LoginActivity;
-import com.Michael.AccountBook.freecash.common.activity.ProductActivity;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.bean.Banner;
+import com.Michael.AccountBook.common.Api;
+import com.Michael.AccountBook.common.ApiService;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.OnRequestDataListener;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.common.activity.HtmlActivity;
+import com.Michael.AccountBook.common.activity.LoginActivity;
+import com.Michael.AccountBook.common.activity.ProductActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

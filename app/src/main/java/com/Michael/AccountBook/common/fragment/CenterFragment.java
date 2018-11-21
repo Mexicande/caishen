@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.fragment;
+package com.Michael.AccountBook.common.fragment;
 
 
 import android.content.Intent;
@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.Michael.AccountBook.freecash.bean.LoginEvent;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.bean.LoginEvent;
-import com.Michael.AccountBook.freecash.common.ActivityUtils;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.common.activity.EmptyActivity;
-import com.Michael.AccountBook.freecash.common.activity.FeedbackActivity;
-import com.Michael.AccountBook.freecash.common.activity.HtmlActivity;
-import com.Michael.AccountBook.freecash.common.activity.LoginActivity;
-import com.Michael.AccountBook.freecash.common.activity.SettingActivity;
+import com.Michael.AccountBook.bean.LoginEvent;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.bean.LoginEvent;
+import com.Michael.AccountBook.common.ActivityUtils;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.common.activity.EmptyActivity;
+import com.Michael.AccountBook.common.activity.FeedbackActivity;
+import com.Michael.AccountBook.common.activity.HtmlActivity;
+import com.Michael.AccountBook.common.activity.LoginActivity;
+import com.Michael.AccountBook.common.activity.SettingActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

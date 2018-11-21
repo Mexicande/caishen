@@ -1,13 +1,13 @@
-package com.Michael.AccountBook.freecash.common.activity;
+package com.Michael.AccountBook.common.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.Michael.AccountBook.freecash.utils.SharedPreferencesUtil;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.common.ActivityUtils;
-import com.Michael.AccountBook.freecash.utils.SharedPreferencesUtil;
+import com.Michael.AccountBook.utils.SharedPreferencesUtil;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.common.ActivityUtils;
+import com.Michael.AccountBook.utils.SharedPreferencesUtil;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.bingoogolapple.bgabanner.BGABanner;

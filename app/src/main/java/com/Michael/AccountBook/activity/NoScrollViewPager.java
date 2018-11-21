@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.activity;
+package com.Michael.AccountBook.activity;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

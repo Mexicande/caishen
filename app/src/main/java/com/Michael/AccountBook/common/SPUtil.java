@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.util.Base64;
 
-import com.Michael.AccountBook.freecash.activity.MyApp;
+import com.Michael.AccountBook.activity.MyApp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

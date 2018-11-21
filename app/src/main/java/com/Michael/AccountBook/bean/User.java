@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.bean;
+package com.Michael.AccountBook.bean;
 
 /**
  * Created by apple on 2017/4/26.

@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.bean;
+package com.Michael.AccountBook.bean;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 /**
  * Created by HugoXie on 16/6/25.

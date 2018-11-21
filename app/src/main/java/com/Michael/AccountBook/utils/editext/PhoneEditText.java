@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.utils.editext;
+package com.Michael.AccountBook.utils.editext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import com.Michael.AccountBook.freecash.R;
+import com.Michael.AccountBook.R;
 
 
 public class PhoneEditText extends AppCompatEditText implements View.OnFocusChangeListener {

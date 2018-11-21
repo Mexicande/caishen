@@ -1,4 +1,4 @@
-package com.Michael.chars.freecash;
+package com.Michael.AccountBook;
 
 import org.junit.Test;
 

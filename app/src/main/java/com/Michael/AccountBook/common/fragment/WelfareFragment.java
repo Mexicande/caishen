@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.fragment;
+package com.Michael.AccountBook.common.fragment;
 
 
 import android.content.Intent;
@@ -15,25 +15,25 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.Michael.AccountBook.freecash.bean.Product;
-import com.Michael.AccountBook.freecash.utils.BrowsingHistory;
-import com.Michael.AccountBook.freecash.utils.RecyclerViewDecoration;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.adapter.ProductAdapter;
-import com.Michael.AccountBook.freecash.bean.Product;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.common.activity.HtmlActivity;
-import com.Michael.AccountBook.freecash.adapter.WelfareAdapter;
-import com.Michael.AccountBook.freecash.bean.WelfareBean;
-import com.Michael.AccountBook.freecash.common.Api;
-import com.Michael.AccountBook.freecash.common.ApiService;
-import com.Michael.AccountBook.freecash.common.OnRequestDataListener;
-import com.Michael.AccountBook.freecash.common.activity.LoginActivity;
-import com.Michael.AccountBook.freecash.utils.BrowsingHistory;
-import com.Michael.AccountBook.freecash.utils.RecyclerViewDecoration;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
+import com.Michael.AccountBook.bean.Product;
+import com.Michael.AccountBook.utils.BrowsingHistory;
+import com.Michael.AccountBook.utils.RecyclerViewDecoration;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.adapter.ProductAdapter;
+import com.Michael.AccountBook.bean.Product;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.common.activity.HtmlActivity;
+import com.Michael.AccountBook.adapter.WelfareAdapter;
+import com.Michael.AccountBook.bean.WelfareBean;
+import com.Michael.AccountBook.common.Api;
+import com.Michael.AccountBook.common.ApiService;
+import com.Michael.AccountBook.common.OnRequestDataListener;
+import com.Michael.AccountBook.common.activity.LoginActivity;
+import com.Michael.AccountBook.utils.BrowsingHistory;
+import com.Michael.AccountBook.utils.RecyclerViewDecoration;
+import com.Michael.AccountBook.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

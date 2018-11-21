@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_bg"
-    tools:context="com.cn.chars.freecash.common.activity.LoginActivity">
+    tools:context="com.Michael.AccountBook.common.activity.LoginActivity">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -42,7 +42,7 @@
             android:layout_height="70dp"
             android:src="@mipmap/logo"/>
 
-        <com.cn.chars.freecash.utils.editext.PowerfulEditText
+        <com.Michael.AccountBook.utils.editext.PowerfulEditText
             android:id="@+id/ed_phone"
             android:layout_marginTop="50dp"
             android:paddingLeft="15dp"
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:visibility="gone"
             android:layout_height="45dp">
-            <com.cn.chars.freecash.utils.editext.PowerfulEditText
+            <com.Michael.AccountBook.utils.editext.PowerfulEditText
                 android:id="@+id/ed_code"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"

@@ -1,8 +1,8 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.activity.MyApp;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.activity.MyApp;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;

@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.activity;
+package com.Michael.AccountBook.common.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,16 +8,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.Michael.AccountBook.freecash.bean.LoginEvent;
-import com.Michael.AccountBook.freecash.common.ActivityUtils;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.R;
-import com.Michael.AccountBook.freecash.bean.LoginEvent;
-import com.Michael.AccountBook.freecash.common.ActivityUtils;
-import com.Michael.AccountBook.freecash.common.Contacts;
-import com.Michael.AccountBook.freecash.common.SPUtil;
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
+import com.Michael.AccountBook.bean.LoginEvent;
+import com.Michael.AccountBook.common.ActivityUtils;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.R;
+import com.Michael.AccountBook.bean.LoginEvent;
+import com.Michael.AccountBook.common.ActivityUtils;
+import com.Michael.AccountBook.common.Contacts;
+import com.Michael.AccountBook.common.SPUtil;
+import com.Michael.AccountBook.utils.ToastUtils;
 import com.jaeger.library.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;

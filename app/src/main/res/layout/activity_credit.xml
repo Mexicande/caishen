@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.cn.chars.freecash.common.activity.CreditActivity">
+    tools:context="com.Michael.AccountBook.common.activity.CreditActivity">
     <include layout="@layout/layout_toolbar"/>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/credit_srl"

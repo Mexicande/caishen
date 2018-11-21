@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.utils;
+package com.Michael.AccountBook.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
-import com.Michael.AccountBook.freecash.R;
+import com.Michael.AccountBook.R;
 
 import java.util.WeakHashMap;
 

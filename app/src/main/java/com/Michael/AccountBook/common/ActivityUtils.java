@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common;
+package com.Michael.AccountBook.common;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -16,8 +16,8 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.view.View;
 
-import com.Michael.AccountBook.freecash.activity.MyApp;
-import com.Michael.AccountBook.freecash.activity.MyApp;
+import com.Michael.AccountBook.activity.MyApp;
+import com.Michael.AccountBook.activity.MyApp;
 
 import java.util.List;
 

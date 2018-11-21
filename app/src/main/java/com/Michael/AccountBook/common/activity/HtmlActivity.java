@@ -1,4 +1,4 @@
-package com.Michael.AccountBook.freecash.common.activity;
+package com.Michael.AccountBook.common.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.Michael.AccountBook.freecash.utils.ToastUtils;
-import com.Michael.AccountBook.freecash.R;
+import com.Michael.AccountBook.utils.ToastUtils;
+import com.Michael.AccountBook.R;
 import com.jaeger.library.StatusBarUtil;
 
 import butterknife.Bind;
