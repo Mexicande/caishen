@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:background="@color/base_white"
     android:layout_height="match_parent"
-    tools:context="com.Michael.AccountBook.common.fragment.WelfareFragment">
+    tools:context=".freecash.common.fragment.WelfareFragment">
     <View
         android:id="@+id/fake_status_bar"
         android:layout_width="match_parent"

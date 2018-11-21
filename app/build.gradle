@@ -4,7 +4,7 @@ apply plugin: 'walle'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.Michael.AccountBook"
+        applicationId "com.cn.chars.freecash"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 9

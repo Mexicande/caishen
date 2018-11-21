@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.Michael.AccountBook.common.activity.HomeActivity">
+    tools:context=".freecash.common.activity.HomeActivity">
     <me.majiajie.pagerbottomtabstrip.PageBottomTabLayout
         android:id="@+id/tab"
         app:elevation="8dp"
@@ -13,7 +13,7 @@
         android:background="@drawable/tab_background"
         android:layout_alignParentBottom="true"
         />
-    <com.Michael.AccountBook.adapter.NoTouchViewPager
+    <com.cn.chars.freecash.adapter.NoTouchViewPager
         android:id="@+id/viewPager"
         android:layout_above="@id/tab"
         android:layout_width="match_parent"
