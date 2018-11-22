@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -22,18 +21,6 @@ import com.cn.chars.freecash.R;
 import com.cn.chars.freecash.adapter.NoTouchViewPager;
 import com.cn.chars.freecash.common.Api;
 import com.cn.chars.freecash.common.MyViewPagerAdapter;
-import com.cn.chars.freecash.common.fragment.CenterFragment;
-import com.cn.chars.freecash.common.fragment.HomeFragment;
-import com.cn.chars.freecash.common.fragment.WelfareFragment;
-import com.cn.chars.freecash.utils.ToastUtils;
-import com.jaeger.library.StatusBarUtil;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,8 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     public static  NavigationController navigationController;
 
     public  static MyViewPagerAdapter pagerAdapter;
-    public  static NoTouchViewPager viewPager;
-    private int newversioncode;
+    private    NoTouchViewPager viewPager;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, HomeActivity.class));
@@ -63,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         initView();
     }
     private void initView() {
