@@ -79,13 +79,13 @@ public class MainFragment extends Fragment {
                     intent.putExtra("link",model.getApp());
                     startActivity(intent);
                 }else {
-                   /* Uri uri = Uri.parse(model.getApp());
+                    Uri uri = Uri.parse(model.getApp());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);*/
-                    Intent intent=new Intent(getActivity(), HtmlActivity.class);
+                    startActivity(intent);
+                    /*Intent intent=new Intent(getActivity(), HtmlActivity.class);
                     intent.putExtra("title",model.getAdvername());
                     intent.putExtra("link",model.getApp());
-                    startActivity(intent);
+                    startActivity(intent);*/
 
                 }
             }

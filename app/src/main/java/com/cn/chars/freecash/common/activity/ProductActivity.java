@@ -93,13 +93,13 @@ public class ProductActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     new BrowsingHistory().execute(product.getId());
-                /*    Uri uri = Uri.parse(product.getLink());
+                    Uri uri = Uri.parse(product.getLink());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);*/
-                    Intent intent=new Intent(ProductActivity.this, HtmlActivity.class);
+                    startActivity(intent);
+                 /*   Intent intent=new Intent(ProductActivity.this, HtmlActivity.class);
                     intent.putExtra("title",product.getName());
                     intent.putExtra("link",product.getLink());
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
         });

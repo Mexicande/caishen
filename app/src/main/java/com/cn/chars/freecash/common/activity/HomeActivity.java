@@ -63,14 +63,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-      //  StatusBarUtil.setColor(this, getResources().getColor(R.color.white),114);
-        ButterKnife.bind(this);
-        AndPermission.with(this)
-                .requestCode(200)
-                .permission(Manifest.permission.READ_PHONE_STATE,Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .callback(listener)
-                .start();
-
         initView();
     }
     private void initView() {
@@ -112,42 +104,5 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(this, "请再确认一次", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    private PermissionListener listener = new PermissionListener() {
-        @Override
-        public void onSucceed(int requestCode, List<String> grantedPermissions) {
-            // 权限申请成功回调。
-            // 和onActivityResult()的requestCode一样，用来区分多个不同的请求。
-            if (requestCode == 200) {
-            }
-        }
-
-        @Override
-        public void onFailed(int requestCode, List<String> deniedPermissions) {
-            // 权限申请失败回调。
-            ToastUtils.showToast(HomeActivity.this, "为了您的账号安全,请打开设备权限");
-            if (requestCode == 200) {
-                if ((AndPermission.hasAlwaysDeniedPermission(HomeActivity.this, deniedPermissions))) {
-                    AndPermission.defaultSettingDialog(HomeActivity.this, 500).show();
-                }
-            }
-        }
-    };
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 500:
-                // 这个400就是上面defineSettingDialog()的第二个参数。
-                // 你可以在这里检查你需要的权限是否被允许，并做相应的操作。
-                if (ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                } else {
-                    ToastUtils.showToast(HomeActivity.this, "获取权限失败");
-                }
-                break;
-            default:
-                break;
-        }
     }
 }

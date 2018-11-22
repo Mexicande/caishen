@@ -3,6 +3,7 @@ package com.cn.chars.freecash.common.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
@@ -259,14 +260,14 @@ public class LoginActivity extends AppCompatActivity {
                     if (!TextUtils.isEmpty(title)) {
                         String id = getIntent().getStringExtra("id");
                         new BrowsingHistory().execute(id);
-                           /* Uri uri = Uri.parse(link);
+                            Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            startActivity(intent);*/
+                            startActivity(intent);
 
-                        Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
+                      /*  Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
                         intent.putExtra("title", title);
                         intent.putExtra("link", link);
-                        startActivity(intent);
+                        startActivity(intent);*/
                     } else {
                         Intent intent = new Intent();
                         intent.putExtra("phone", phone);
@@ -322,14 +323,14 @@ public class LoginActivity extends AppCompatActivity {
                         if (!TextUtils.isEmpty(title)) {
                             String id = getIntent().getStringExtra("id");
                             new BrowsingHistory().execute(id);
-                          /*  Uri uri = Uri.parse(link);
+                            Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            startActivity(intent);*/
-
+                            startActivity(intent);
+/*
                             Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
                             intent.putExtra("title", title);
                             intent.putExtra("link", link);
-                            startActivity(intent);
+                            startActivity(intent);*/
 
 
                         } else {
