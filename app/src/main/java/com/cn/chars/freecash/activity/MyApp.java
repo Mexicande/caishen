@@ -47,7 +47,7 @@ public class MyApp extends Application {
     private void initOkGo() {
         String channel = WalleChannelReader.getChannel(this.getApplicationContext());
         MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,Contacts.UMENG_KEY
-                ,channel));
+                ,"vivo"));
 
         HttpHeaders parser=new HttpHeaders();
         parser.put("channel",channel);

@@ -21,8 +21,8 @@ android {
         release {
             v1SigningEnabled true
             v2SigningEnabled true
-            storeFile file('../keystore/free')
-            keyAlias 'free'
+            storeFile file('../keystore/安卓.jks')
+            keyAlias '安卓'
             keyPassword '000000'
             storePassword '000000'
         }
@@ -32,7 +32,7 @@ android {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
             //混淆
-            minifyEnabled true
+            minifyEnabled false
             //Zipalign优化
             zipAlignEnabled true
             // 移除无用的resource文件
