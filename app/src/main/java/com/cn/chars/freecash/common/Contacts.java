@@ -7,7 +7,7 @@ package com.cn.chars.freecash.common;
 public interface Contacts {
     String LEAN_KEY="1Xractc2sikvNt5m6r9GP7sK";
     String LEAN_ID="9zeHS4F8GAHi97Fkg0p80FYV-gzGzoHsz";
-    String UMENG_KEY="5bf3b1d8f1f556db7d000156";
+    String UMENG_KEY="5bfe58fab465f5ab4800019b";
 
     String TOKEN="token";
     String PHONE="phone";
