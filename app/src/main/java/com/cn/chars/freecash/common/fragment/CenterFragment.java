@@ -102,7 +102,7 @@ public class CenterFragment extends Fragment {
                     startActivityForResult(intent,LOAN_REQUESTION);
                 }else {
                     Intent intent = new Intent(getActivity(), EmptyActivity.class);
-                    intent.putExtra("title","贷款进度");
+                    intent.putExtra("title","订单管理");
                     startActivity(intent);
                 }
                 break;
@@ -113,7 +113,7 @@ public class CenterFragment extends Fragment {
                     startActivityForResult(intent,FREE_REQUESTION);
                 }else {
                     Intent intent = new Intent(getActivity(), EmptyActivity.class);
-                    intent.putExtra("title","我的免息券");
+                    intent.putExtra("title","还款管理");
                     startActivity(intent);
                 }
                 break;

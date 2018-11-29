@@ -70,7 +70,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodcut);
         ButterKnife.bind(this);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimaryDark), 90);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 90);
         initView();
         setListener();
         getData();

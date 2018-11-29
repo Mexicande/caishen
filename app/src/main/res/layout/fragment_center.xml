@@ -5,16 +5,30 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/base_white"
-    tools:context=".freecash.common.fragment.CenterFragment">
+    android:background="@color/white"
+    >
       <RelativeLayout
-          android:background="@mipmap/center_bg"
           android:layout_width="match_parent"
-          android:layout_height="200dp">
+          android:layout_height="wrap_content">
+         <ImageView
+             android:adjustViewBounds="true"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:src="@mipmap/center_bg"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="我的"
+             android:layout_marginTop="30dp"
+             android:layout_centerHorizontal="true"
+             android:textSize="17sp"
+             android:textColor="@color/white"/>
+
          <LinearLayout
+             android:layout_marginTop="55dp"
+             android:background="@mipmap/center_card"
              android:paddingTop="30dp"
              android:id="@+id/layout_login"
-             android:layout_centerInParent="true"
              android:layout_width="wrap_content"
              android:orientation="vertical"
              android:layout_height="wrap_content">
@@ -26,46 +40,65 @@
             <TextView
                 android:id="@+id/tv_login"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/color_66"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="立即登录"/>
          </LinearLayout>
       </RelativeLayout>
+
          <LinearLayout
+             android:paddingLeft="10dp"
+             android:paddingRight="10dp"
              android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
             <com.allen.library.SuperTextView
                 android:id="@+id/super_schedule"
                 app:sShapeCornersRadius="10dp"
+                app:sShapeSolidColor="@color/white"
+                app:sUseShape="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sLeftTextString="贷款进度"
+                app:sLeftTextString="订单管理"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/text_color_ee"/>
             <com.allen.library.SuperTextView
                 android:id="@+id/super_free"
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:sLeftTextString="我的免息券"
+                app:sShapeSolidColor="@color/white"
+                app:sUseShape="true"
+                app:sLeftTextString="还款管理"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
          </LinearLayout>
+      <View
+          android:layout_width="match_parent"
+       android:layout_height="0.5dp"
+       android:background="@color/text_color_ee"/>
          <LinearLayout
+             android:paddingLeft="10dp"
+             android:paddingRight="10dp"
              android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
             <com.allen.library.SuperTextView
                 android:id="@+id/super_feedback"
                 app:sShapeCornersRadius="10dp"
+                app:sShapeSolidColor="@color/white"
+                app:sUseShape="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:sLeftTextString="意见反馈"
@@ -73,16 +106,26 @@
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/text_color_ee"/>
             <com.allen.library.SuperTextView
                 android:id="@+id/super_setting"
                 app:sShapeCornersRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:sLeftTextString="设置"
+                app:sShapeSolidColor="@color/white"
+                app:sUseShape="true"
                 app:sLeftTextColor="@color/color_33"
                 app:sRightIconRes="@mipmap/icon_arrow_right"
                 >
             </com.allen.library.SuperTextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/text_color_ee"/>
          </LinearLayout>
 
 </LinearLayout>

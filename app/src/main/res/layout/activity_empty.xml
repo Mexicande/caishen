@@ -7,7 +7,14 @@
     android:layout_height="match_parent"
    >
     <include layout="@layout/layout_toolbar"/>
+    <ImageView
+        android:id="@+id/emtry"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/loan_emtry_img"/>
     <TextView
+        android:layout_below="@id/emtry"
         android:textColor="@color/gay"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"

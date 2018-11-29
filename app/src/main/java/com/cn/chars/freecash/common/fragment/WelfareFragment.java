@@ -117,7 +117,7 @@ public class WelfareFragment extends Fragment {
     }
 
     private void initView() {
-        title.setText("贷款");
+        title.setText("借钱");
         mProductAdapter = new ProductAdapter(null);
         mRecylerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerViewDecoration decoration = new RecyclerViewDecoration(10);

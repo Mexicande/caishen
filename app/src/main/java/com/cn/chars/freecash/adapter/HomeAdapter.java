@@ -23,26 +23,25 @@ import java.util.List;
 public class HomeAdapter extends BaseQuickAdapter<Product,BaseViewHolder> {
 
     public HomeAdapter(List<Product> data) {
-        super(R.layout.new_item, data);
+        super(R.layout.loan_item, data);
     }
     @Override
     protected void convert(BaseViewHolder helper, Product item) {
-            helper.setText(R.id.tv_ProductName,item.getName());
-        helper .setText(R.id.tv_Summry,item.getProduct_introduction())
-                .setText(R.id.number,item.getSort()+1000+"")
-                .setVisible(R.id.iv_label, true)
+            helper.setText(R.id.name,item.getName());
+        helper .setText(R.id.desc,item.getProduct_introduction())
+                .setText(R.id.apply,item.getSort()+1000+"申请")
                 .setText(R.id.rate,"日利率: "+item.getMin_algorithm());
         String maximumAmount = item.getMaximum_amount();
         if(maximumAmount.length()>4){
             String substring = maximumAmount.substring(0, maximumAmount.length() - 4);
-            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"~"+substring+"万");
+            helper.setText(R.id.money,item.getMinimum_amount()+"~"+substring+"万");
         }else {
-            helper.setText(R.id.min_max_Special,item.getMinimum_amount()+"~"+maximumAmount);
+            helper.setText(R.id.money,item.getMinimum_amount()+"~"+maximumAmount);
         }
 
         Glide.with(mContext).load(item.getProduct_logo())
-                .bitmapTransform(new GlideRoundTransform(mContext,5))
-                .into((ImageView) helper.getView(R.id.head))
+                .bitmapTransform(new GlideRoundTransform(mContext,10))
+                .into((ImageView) helper.getView(R.id.iv_logo))
         ;
     }
 }

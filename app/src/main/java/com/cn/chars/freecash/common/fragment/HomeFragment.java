@@ -233,7 +233,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
     /**
      * RecyclerView   header
      *
@@ -241,33 +240,38 @@ public class HomeFragment extends Fragment {
      */
     private RecyclerView mHotRecyclerView;
 
-
     private View setView() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.header_layout, null);
         mHotRecyclerView=view.findViewById(R.id.hot_recycler);
 
         banner = (BGABanner) view.findViewById(R.id.banner_fresco_demo_content);
-        ButterKnife.findById(view,R.id.layout_credit).setOnClickListener(new View.OnClickListener() {
+        ButterKnife.findById(view,R.id.layout_big).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProductActivity.launch(getActivity(),"11");
             }
         });
+        ButterKnife.findById(view,R.id.more).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeActivity.navigationController.setSelect(1);
+            }
+        });
 
 
-        ButterKnife.findById(view,R.id.layout_spped).setOnClickListener(new View.OnClickListener() {
+        ButterKnife.findById(view,R.id.layout_smart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProductActivity.launch(getActivity(),"4");
             }
         });
-        ButterKnife.findById(view,R.id.layout_capacity).setOnClickListener(new View.OnClickListener() {
+        ButterKnife.findById(view,R.id.layout_card).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProductActivity.launch(getActivity(),"7");
             }
         });
-        ButterKnife.findById(view,R.id.layout_small).setOnClickListener(new View.OnClickListener() {
+        ButterKnife.findById(view,R.id.apply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProductActivity.launch(getActivity(),"9");
