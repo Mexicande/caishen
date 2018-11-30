@@ -56,6 +56,7 @@
     </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/home"
             android:layout_marginTop="20dp"
             android:layout_below="@id/card"
             android:orientation="vertical"
@@ -82,9 +83,11 @@
                 />
         </LinearLayout>
         <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_below="@id/home"
             android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/base_white"
             android:layout_height="wrap_content">
             <TextView
                 android:textSize="14sp"

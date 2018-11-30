@@ -26,6 +26,7 @@ import com.cn.chars.freecash.common.ApiService;
 import com.cn.chars.freecash.common.Contacts;
 import com.cn.chars.freecash.common.OnRequestDataListener;
 import com.cn.chars.freecash.common.SPUtil;
+import com.cn.chars.freecash.common.activity.HomeActivity;
 import com.cn.chars.freecash.common.activity.LoginActivity;
 import com.cn.chars.freecash.common.activity.ProductActivity;
 import com.cn.chars.freecash.utils.BrowsingHistory;
@@ -144,7 +145,12 @@ public class MainFragment extends Fragment {
                 ProductActivity.launch(getActivity(),"11");
             }
         });
-
+        ButterKnife.findById(view,R.id.more).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeActivity.navigationController.setSelect(1);
+            }
+        });
 
         ButterKnife.findById(view,R.id.layout_smart).setOnClickListener(new View.OnClickListener() {
             @Override
