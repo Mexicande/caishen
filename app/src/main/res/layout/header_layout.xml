@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/base_white"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
         <cn.bingoogolapple.bgabanner.BGABanner
@@ -20,80 +20,49 @@
             android:adjustViewBounds="true"
             >
         </cn.bingoogolapple.bgabanner.BGABanner>
+    <LinearLayout
+        android:id="@+id/card"
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/layout_big"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/icon_big"
+                    />
+                <ImageView
+                    android:id="@+id/layout_smart"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/icon_smart"
+                    />
+                <ImageView
+                    android:id="@+id/layout_card"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/icon_card"
+                    />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/card"
             android:orientation="vertical"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.zyp.cardview.YcCardView
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:ycCardCornerRadius="5dp"
-                app:ycCardElevation="3dp"
-                app:ycCardMaxElevation="3dp"
-                app:ycCardPreventCornerOverlap="true"
-                app:ycStartShadowColor="@color/colorPrimary"
-                >
-                <LinearLayout
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:id="@+id/layout_big"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_big"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="大额贷款"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center"
-                        android:id="@+id/layout_smart"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_smart"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="小额速贷"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center"
-                        android:id="@+id/layout_card"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_card"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="身份证贷"/>
-                    </LinearLayout>
 
-                </LinearLayout>
-
-            </com.zyp.cardview.YcCardView>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,4 +105,4 @@
                 android:text="查看更多 >"/>
 
         </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>
