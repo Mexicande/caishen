@@ -263,11 +263,6 @@ public class LoginActivity extends AppCompatActivity {
                             Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(intent);
-
-                      /*  Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
-                        intent.putExtra("title", title);
-                        intent.putExtra("link", link);
-                        startActivity(intent);*/
                     } else {
                         Intent intent = new Intent();
                         intent.putExtra("phone", phone);
@@ -326,13 +321,6 @@ public class LoginActivity extends AppCompatActivity {
                             Uri uri = Uri.parse(link);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(intent);
-/*
-                            Intent intent = new Intent(LoginActivity.this, HtmlActivity.class);
-                            intent.putExtra("title", title);
-                            intent.putExtra("link", link);
-                            startActivity(intent);*/
-
-
                         } else {
                             Intent intent = new Intent();
                             intent.putExtra("phone", phone);

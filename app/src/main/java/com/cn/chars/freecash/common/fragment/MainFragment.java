@@ -87,10 +87,6 @@ public class MainFragment extends Fragment {
                     Uri uri = Uri.parse(model.getApp());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
-                    /*Intent intent=new Intent(getActivity(), HtmlActivity.class);
-                    intent.putExtra("title",model.getAdvername());
-                    intent.putExtra("link",model.getApp());
-                    startActivity(intent);*/
 
                 }
             }
@@ -108,8 +104,7 @@ public class MainFragment extends Fragment {
                     startActivity(intent);
                 }else {
                     new BrowsingHistory().execute(product.getId());
-
-                    Uri uri = Uri.parse(product.getLink());
+                    Uri uri = Uri.parse(product.getLink().trim());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
                 }

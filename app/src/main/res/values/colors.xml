@@ -28,7 +28,7 @@
     <color name="text_color_99">#999999</color>
     <color name="text_color_ee">#eeeeee</color>
 
-    <color name="dispress_color">#97c0ed</color>
-    <color name="press_color">#0867d1</color>
+    <color name="dispress_color">#BFF3EF</color>
+    <color name="press_color">#168077</color>
 
 </resources>
