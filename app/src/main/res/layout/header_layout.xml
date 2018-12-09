@@ -29,27 +29,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-                <ImageView
+                <com.cn.chars.freecash.utils.shadowimageview.ShadowImageView
                     android:id="@+id/layout_big"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:src="@mipmap/icon_big"
+                    android:layout_height="wrap_content"
+                    app:shadowRound="0dp"
+                    app:shadowSrc="@mipmap/icon_big"
                     />
-                <ImageView
+                <com.cn.chars.freecash.utils.shadowimageview.ShadowImageView
                     android:id="@+id/layout_smart"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:src="@mipmap/icon_smart"
-                    />
-                <ImageView
+                    android:layout_height="wrap_content"
+                    app:shadowRound="0dp"
+                    app:shadowSrc="@mipmap/icon_big"                    />
+                <com.cn.chars.freecash.utils.shadowimageview.ShadowImageView
                     android:id="@+id/layout_card"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:src="@mipmap/icon_card"
-                    />
+                    android:layout_height="wrap_content"
+                    app:shadowRound="0dp"
+                    app:shadowSrc="@mipmap/icon_big"                    />
 
         </LinearLayout>
 

@@ -8,8 +8,8 @@ android {
         applicationId "com.cn.chars.freecash"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 4
-        versionName "2.1.5"
+        versionCode 5
+        versionName "2.1.6"
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
@@ -92,6 +92,8 @@ dependencies {
     implementation 'com.lzy.net:okserver:2.0.5'
     implementation 'com.yanzhenjie:permission:1.1.2'
     implementation 'junit:junit:4.12'
+    implementation 'com.yinglan.shadowimageview:shadowimageview:1.0.4'
+
 
 
 }

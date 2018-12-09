@@ -52,14 +52,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Bind(R.id.ed_phone)
     PowerfulEditText edPhone;
-    @Bind(R.id.result)
-    ImageView result;
-    @Bind(R.id.verify_iv)
-    ImageView verifyIv;
-    @Bind(R.id.et_Result)
-    EditText etResult;
-    @Bind(R.id.layout_Result)
-    RelativeLayout layoutResult;
     @Bind(R.id.ed_code)
     PowerfulEditText edCode;
     @Bind(R.id.bt_code)
@@ -74,12 +66,8 @@ public class LoginActivity extends AppCompatActivity {
     private int oldNew = 0;
     private KProgressHUD hud;
     private String phone;
-    private int isolduser;
 
-    private CodeUtils codeUtils;
-    private String yanZhengResult;
-    private String etYanZhengCode;
-    private String yanZhengCode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         setListener();
-        initYanzheng();
 
     }
 
@@ -106,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         edPhone.addTextListener(new PowerfulEditText.TextListener() {
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after) {
-                if (!etResult.getText().toString().isEmpty() && s.toString().length() == 11) {
+                if (s.toString().length() == 11) {
                     btLogin.setEnabled(true);
                     btLogin.setUseShape();
                 } else {
@@ -118,28 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        etResult.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (edPhone.getText().toString().length() == 11 && !s.toString().isEmpty()) {
-                    btLogin.setEnabled(true);
-                    btLogin.setUseShape();
-                } else {
-                    btLogin.setEnabled(false);
-                    btLogin.setUseShape();
-                }
             }
 
             @Override
@@ -173,13 +138,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void initYanzheng() {
-        codeUtils = CodeUtils.getInstance();
-        Bitmap bitmap = codeUtils.createBitmap();
-        verifyIv.setImageBitmap(bitmap);
-        yanZhengCode = codeUtils.getCode();
-        yanZhengResult = codeUtils.getResult() + "";
-    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -331,7 +289,6 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         captchaTimeCount.start();
                         view.setVisibility(View.VISIBLE);
-                        layoutResult.setVisibility(View.GONE);
                         layoutCode.setVisibility(View.VISIBLE);
                         btLogin.setEnabled(false);
                         btLogin.setUseShape();
@@ -351,7 +308,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.back, R.id.bt_code, R.id.bt_login, R.id.verify_iv})
+    @OnClick({R.id.back, R.id.bt_code, R.id.bt_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -361,26 +318,13 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             case R.id.bt_login:
                 if (oldNew == 0) {
-                    etYanZhengCode = etResult.getText().toString().trim();
-                    if (TextUtils.isEmpty(etYanZhengCode)) {
-                        ToastUtils.showToast(this, "请输入图片里的结果");
-                        return;
-                    }
-                    if (!yanZhengResult.equals(etYanZhengCode)) {
-                        ToastUtils.showToast(this, "图片结果输入有误");
-                        etResult.getText().clear();
-                        initYanzheng();
-                    } else {
-                        isOldUser();
-                    }
+                    isOldUser();
+
                 } else {
                     String code = edCode.getText().toString();
                     verCode(code);
                 }
 
-                break;
-            case R.id.verify_iv:
-                initYanzheng();
                 break;
         }
     }

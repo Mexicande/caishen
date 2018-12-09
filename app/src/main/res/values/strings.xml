@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">安逸花借款</string>
+    <string name="app_name">安逸花</string>
     <string name="App_name">安逸花</string>
     <!-- error-->
     <string name="net_error">网络异常</string>
@@ -17,7 +17,7 @@
     <string name="retry">轻触屏幕重试</string>
     <string name="empty">暂无数据哦！ </string>
     <string name="title_activity_desc">DescActivity</string>
-    <string name="hint_feedback">请输入你的问题, 工作人员会尽快联系并恢复您的问题（限150字以内）</string>
+    <string name="hint_feedback">请输入你的问题, 工作人员会尽快联系并回复您的问题（限150字以内）</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
