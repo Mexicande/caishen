@@ -32,8 +32,8 @@ public class BrowsingHistory {
         try {
             jsonObject.put("token",token);
             jsonObject.put("product_id",prdId);
-            jsonObject.put("app_name","安逸花");
-            jsonObject.put("channel","anyihua");
+            jsonObject.put("app_name","优借");
+            jsonObject.put("channel","youjie");
         } catch (JSONException e) {
             e.printStackTrace();
         }
